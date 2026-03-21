@@ -1,32 +1,184 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Dwayne Snyder for City Council</title>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dwayne Snyder for City Council</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary-blue: #0a1f44; /* Deep Judicial Navy */
+      --accent-red: #d71a21;   /* Campaign Red */
+      --white: #ffffff;
+      --light-gray: #f4f4f4;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      background-color: var(--white);
+      text-align: center;
+    }
+
+    /* Header Section mimicking the McCollum layout */
+    header {
+      background-color: var(--primary-blue);
+      color: var(--white);
+      padding: 60px 20px;
+      border-bottom: 8px solid var(--accent-red); /* The signature red accent line */
+    }
+
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    h2.subtitle {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-top: 10px;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+    }
+
+    /* Content Area */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 50px 20px;
+    }
+
+    .headline {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--primary-blue);
+      font-size: 2.2rem;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .divider {
+      width: 80px;
+      height: 4px;
+      background-color: var(--accent-red);
+      margin: 20px auto;
+    }
+
+    p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    /* Priorities List Styling */
+    .priorities-box {
+      background-color: var(--light-gray);
+      padding: 30px;
+      border-radius: 8px;
+      margin-top: 40px;
+      text-align: left;
+    }
+
+    h3 {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--primary-blue);
+      text-transform: uppercase;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 10px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      font-size: 1.1rem;
+      padding: 10px 0;
+      display: flex;
+      align-items: center;
+    }
+
+    li::before {
+      content: "★"; /* Campaign Star */
+      color: var(--accent-red);
+      margin-right: 15px;
+      font-size: 1.2rem;
+    }
+
+    /* Contact/Footer */
+    .contact-info {
+      margin-top: 40px;
+      padding: 20px;
+      font-weight: 600;
+    }
+
+    .qr-code {
+      max-width: 200px;
+      height: auto;
+      margin: 30px auto;
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+
+    /* Button Style like the "Donate" buttons */
+    .btn {
+      display: inline-block;
+      background-color: var(--accent-red);
+      color: white;
+      padding: 15px 30px;
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: bold;
+      text-transform: uppercase;
+      border-radius: 4px;
+      margin-top: 20px;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #b5151b;
+    }
+  </style>
 </head>
 
-<body style="font-family: Arial; margin: 0; text-align: center;">
+<body>
 
-  <div style="background:#1e3a5f; color:white; padding:40px;">
+  <header>
     <h1>Dwayne Snyder</h1>
-    <h2>For City Council</h2>
+    <div style="height: 2px; width: 100px; background: white; margin: 15px auto;"></div>
+    <h2 class="subtitle">For City Council</h2>
+  </header>
+
+  <div class="container">
+    <h2 class="headline">Putting Our Community First</h2>
+    <div class="divider"></div>
+    <p>Committed to transparency, safety, and smart growth for our neighborhoods.</p>
+
+    <div class="priorities-box">
+      <h3>Campaign Priorities</h3>
+      <ul>
+        <li>Safer neighborhoods through community policing</li>
+        <li>Building a strong, sustainable local economy</li>
+        <li>Responsible development and infrastructure</li>
+      </ul>
+    </div>
+
+    <div class="contact-info">
+      <p>GET INVOLVED: <a href="mailto:Me71643@yahoo.com" style="color: var(--accent-red); text-decoration: none;">Me71643@yahoo.com</a></p>
+      <a href="#" class="btn">Join the Campaign</a>
+    </div>
+
+    <img src="QR.png" alt="Scan to Learn More" class="qr-code">
   </div>
 
-  <div style="padding:40px;">
-    <h2>Putting Our Community First</h2>
-    <p>Committed to transparency, safety, and smart growth.</p>
-
-    <h3>Priorities</h3>
-    <ul style="list-style:none; padding:0;">
-      <li>✔ Safer neighborhoods</li>
-      <li>✔ Strong local economy</li>
-      <li>✔ Responsible development</li>
-    </ul>
-
-    <h3>Get Involved</h3>
-    <p>Email:Me71643@yahoo.com </p>
-  </div>
-<img src="QR.png" alt="Historic collage" style="max-width:100%; height:auto;">
 </body>
 </html>
