@@ -27,8 +27,10 @@
     header {
       background-color: var(--primary-blue);
       color: var(--white);
-      padding: 80px 20px 160px 20px;
+      padding: 40px 20px 40px 20px; /* reduced to make tabs fit nicely */
       border-bottom: 10px solid var(--accent-red);
+      position: relative;
+      z-index: 10;
     }
 
     h1 {
@@ -49,9 +51,9 @@
     }
 
     .hero-container {
-      margin-top: -130px;
+      margin-top: 20px; /* small margin below header */
       position: relative;
-      z-index: 10;
+      z-index: 5;
     }
 
     .candidate-img {
@@ -68,6 +70,10 @@
       display: flex;
       justify-content: center;
       background: var(--primary-blue);
+      border-bottom: 4px solid var(--accent-red);
+      margin-top: 20px;
+      position: relative;
+      z-index: 15;
     }
 
     .tab-button {
@@ -78,10 +84,15 @@
       border: none;
       background: none;
       font-family: 'Montserrat', sans-serif;
+      transition: background 0.3s;
     }
 
     .tab-button.active {
       background: var(--accent-red);
+    }
+
+    .tab-button:hover:not(.active) {
+      background: rgba(215,26,33,0.2);
     }
 
     .tab-content {
@@ -197,18 +208,17 @@
 <header>
   <h1>Dwayne Snyder</h1>
   <div class="subtitle">For City Council</div>
+  
+  <!-- TABS INSIDE HEADER -->
+  <div class="tabs">
+    <button class="tab-button active" onclick="openTab(event,'home')">Home</button>
+    <button class="tab-button" onclick="openTab(event,'qualifications')">Qualifications</button>
+  </div>
 </header>
-<div class="tabs">
-  <button class="tab-button active" onclick="openTab(event,'home')">Home</button>
-  <button class="tab-button" onclick="openTab(event,'qualifications')">Qualifications</button>
-</div>
-
   
 <div class="hero-container">
   <img src="IMG_7435.jpeg" class="candidate-img">
 </div>
-
-
 
 <!-- HOME -->
 <div id="home" class="tab-content active">
