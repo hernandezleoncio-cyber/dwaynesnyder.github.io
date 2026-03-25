@@ -1,212 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dwayne Snyder for City Council</title>
-  
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-  
-  <style>
-    :root {
-      --primary-blue: #0a1f44;
-      --accent-red: #d71a21;
-      --white: #ffffff;
-      --light-gray: #f4f4f4;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dwayne Snyder for City Council</title>
 
-    body {
-      font-family: 'Open Sans', sans-serif;
-      margin: 0;
-      padding: 0;
-      color: #333;
-      background-color: var(--white);
-      text-align: center;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
-    /* Header */
-    header {
-      background-color: var(--primary-blue);
-      color: var(--white);
-      padding: 40px 20px 20px 20px; /* top padding larger for spacing */
-      border-bottom: 10px solid var(--accent-red);
-      position: relative;
-      z-index: 10;
-    }
+<style>
+:root {
+  --primary-blue: #0a1f44;
+  --accent-red: #d71a21;
+  --white: #ffffff;
+  --light-gray: #f4f4f4;
+}
 
-    h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(2.5rem, 8vw, 4rem);
-      font-weight: 800;
-      margin: 0;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  background-color: var(--white);
+  text-align: center;
+}
 
-    .subtitle {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-top: 10px;
-      letter-spacing: 5px;
-    }
+/* Header */
+header {
+  background-color: var(--primary-blue);
+  color: var(--white);
+  padding: 40px 20px 20px 20px;
+  border-bottom: 10px solid var(--accent-red);
+  position: relative;
+  z-index: 10;
+}
 
-    /* Hero Image */
-    .hero-container {
-      margin-top: 20px;
-      position: relative;
-      z-index: 5;
-    }
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-weight: 800;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
 
-    .candidate-img {
-      width: 280px;
-      height: 280px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 8px solid var(--white);
-      box-shadow: 0px 10px 30px rgba(0,0,0,0.15);
-    }
+.subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 10px;
+  letter-spacing: 5px;
+}
 
-    /* Tabs */
-    .tabs {
-      display: flex;
-      justify-content: center;
-      background: var(--primary-blue);
-      border-bottom: 4px solid var(--accent-red);
-      position: sticky; /* Make tabs sticky */
-      top: 0;
-      z-index: 100; /* stays above content */
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* optional shadow */
-    }
+/* Hero Image */
+.hero-container {
+  margin-top: 20px;
+  position: relative;
+  z-index: 5;
+}
 
-    .tab-button {
-      padding: 15px 25px;
-      cursor: pointer;
-      color: white;
-      font-weight: bold;
-      border: none;
-      background: none;
-      font-family: 'Montserrat', sans-serif;
-      transition: background 0.3s;
-    }
+.candidate-img {
+  width: 280px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 8px solid var(--white);
+  box-shadow: 0px 10px 30px rgba(0,0,0,0.15);
+}
 
-    .tab-button.active {
-      background: var(--accent-red);
-    }
+/* FULL WIDTH ANGLED TABS */
+.tabs {
+  display: flex;
+  width: 100vw;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  margin: 0;
+  overflow: hidden;
+}
 
-    .tab-button:hover:not(.active) {
-      background: rgba(215,26,33,0.2);
-    }
+.tab-button {
+  flex: 1; /* make all tabs equal width */
+  padding: 20px 0;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+  background: var(--primary-blue);
+  clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%); /* angled edges */
+  transition: background 0.3s;
+}
 
-    /* Tab content */
-    .tab-content {
-      display: none;
-    }
+.tab-button.active {
+  background: var(--accent-red);
+}
 
-    .tab-content.active {
-      display: block;
-    }
+.tab-button:hover:not(.active) {
+  background: rgba(215,26,33,0.2);
+}
 
-    /* General containers */
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
+/* Tab content */
+.tab-content {
+  display: none;
+}
 
-    .headline {
-      font-family: 'Montserrat', sans-serif;
-      color: var(--primary-blue);
-      font-size: 2.2rem;
-      text-transform: uppercase;
-    }
+.tab-content.active {
+  display: block;
+}
 
-    .divider {
-      width: 60px;
-      height: 4px;
-      background-color: var(--accent-red);
-      margin: 20px auto;
-    }
+/* General containers */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
 
-    p {
-      font-size: 1.2rem;
-      line-height: 1.6;
-      color: #444;
-    }
+.headline {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--primary-blue);
+  font-size: 2.2rem;
+  text-transform: uppercase;
+}
 
-    .priorities-box {
-      background-color: var(--light-gray);
-      padding: 40px;
-      border-radius: 12px;
-      margin: 40px 0;
-      text-align: left;
-      border-left: 5px solid var(--primary-blue);
-    }
+.divider {
+  width: 60px;
+  height: 4px;
+  background-color: var(--accent-red);
+  margin: 20px auto;
+}
 
-    .priorities-box h3 {
-      font-family: 'Montserrat', sans-serif;
-      color: var(--primary-blue);
-      text-transform: uppercase;
-    }
+p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #444;
+}
 
-    ul {
-      list-style: none;
-      padding: 0;
-    }
+.priorities-box {
+  background-color: var(--light-gray);
+  padding: 40px;
+  border-radius: 12px;
+  margin: 40px 0;
+  text-align: left;
+  border-left: 5px solid var(--primary-blue);
+}
 
-    li {
-      font-size: 1.15rem;
-      padding: 10px 0;
-      border-bottom: 1px solid #ddd;
-    }
+.priorities-box h3 {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--primary-blue);
+  text-transform: uppercase;
+}
 
-    li::before {
-      content: "★";
-      color: var(--accent-red);
-      margin-right: 10px;
-    }
+ul {
+  list-style: none;
+  padding: 0;
+}
 
-    /* Resume box */
-    .resume-box {
-      background: var(--light-gray);
-      padding: 40px;
-      border-radius: 12px;
-      text-align: left;
-      box-shadow: inset 0 3px 10px rgba(0,0,0,0.06);
-      margin-top: 30px;
-    }
+li {
+  font-size: 1.15rem;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
 
-    .resume-box h3 {
-      color: var(--primary-blue);
-      margin-top: 25px;
-    }
+li::before {
+  content: "★";
+  color: var(--accent-red);
+  margin-right: 10px;
+}
 
-    .resume-box p {
-      margin: 8px 0;
-    }
+/* Resume box */
+.resume-box {
+  background: var(--light-gray);
+  padding: 40px;
+  border-radius: 12px;
+  text-align: left;
+  box-shadow: inset 0 3px 10px rgba(0,0,0,0.06);
+  margin-top: 30px;
+}
 
-    .btn {
-      display: inline-block;
-      background-color: var(--accent-red);
-      color: white;
-      padding: 18px 40px;
-      text-decoration: none;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: bold;
-      text-transform: uppercase;
-      border-radius: 5px;
-      margin: 20px 0;
-    }
+.resume-box h3 {
+  color: var(--primary-blue);
+  margin-top: 25px;
+}
 
-    .contact-link {
-      color: var(--primary-blue);
-      font-weight: 700;
-      text-decoration: none;
-      border-bottom: 2px solid var(--accent-red);
-    }
-  </style>
+.resume-box p {
+  margin: 8px 0;
+}
+
+.btn {
+  display: inline-block;
+  background-color: var(--accent-red);
+  color: white;
+  padding: 18px 40px;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 5px;
+  margin: 20px 0;
+}
+
+.contact-link {
+  color: var(--primary-blue);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 2px solid var(--accent-red);
+}
+</style>
 </head>
-
 <body>
 
 <header>
@@ -214,7 +216,7 @@
   <div class="subtitle">For City Council</div>
 </header>
 
-<!-- TABS AT TOP -->
+<!-- ANGLED FULL WIDTH TABS -->
 <div class="tabs">
   <button class="tab-button active" onclick="openTab(event,'home')">Home</button>
   <button class="tab-button" onclick="openTab(event,'qualifications')">Qualifications</button>
@@ -252,7 +254,6 @@
   <div class="container">
     <h2 class="headline">Qualifications</h2>
     <div class="divider"></div>
-
     <p>
       Dwayne Snyder brings over 35 years of financial leadership and public service experience to the Lowell community.
       His background as Mayor, City Council member, and banking professional gives him the experience needed to manage budgets,
