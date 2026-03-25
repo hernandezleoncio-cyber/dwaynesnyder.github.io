@@ -9,9 +9,9 @@
 
 <style>
 :root {
-  --primary-blue: #0d1b2a; /* Deep Midnight Blue */
-  --accent-red: #be1e2d;   /* Bold American Red */
-  --gold-accent: #c5a059;  /* Prestige Gold */
+  --primary-blue: #0d1b2a;
+  --accent-red: #be1e2d;
+  --gold-accent: #c5a059;
   --white: #ffffff;
   --light-gray: #f8f9fa;
 }
@@ -29,10 +29,10 @@ body {
 header {
   background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 100%);
   color: var(--white);
-  padding: 60px 20px 140px 20px;
+  padding: 60px 20px 140px 20px; /* Space for the candidate photo below */
   border-bottom: 8px solid var(--accent-red);
   position: relative;
-  z-index: 10;
+  z-index: 1; /* Keeping this low so nav can sit on top */
 }
 
 h1 {
@@ -42,7 +42,6 @@ h1 {
   margin: 0;
   text-transform: uppercase;
   letter-spacing: -1px;
-  line-height: 0.9;
 }
 
 .subtitle {
@@ -55,14 +54,14 @@ h1 {
   text-transform: uppercase;
 }
 
-/* Navigation Tabs */
+/* Navigation Tabs - FIXED OVERLAP ISSUE */
 .tabs {
   display: flex;
   width: 100%;
   background: #1b263b;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000; /* Extremely high so it always stays on top of the photo */
   border-bottom: 4px solid var(--accent-red);
 }
 
@@ -88,11 +87,11 @@ h1 {
   background: rgba(255,255,255,0.1);
 }
 
-/* Hero Portrait */
+/* Hero Portrait - ADJUSTED LAYER */
 .hero-container {
-  margin-top: -100px;
+  margin-top: -100px; 
   position: relative;
-  z-index: 10;
+  z-index: 10; /* Lower than the navigation ribbon (1000) */
 }
 
 .candidate-img {
@@ -104,7 +103,7 @@ h1 {
   box-shadow: 0px 15px 35px rgba(0,0,0,0.2);
 }
 
-/* General Layout Containers */
+/* Layout Containers */
 .container {
   max-width: 900px;
   margin: 0 auto;
@@ -117,7 +116,6 @@ h1 {
   font-size: 2.5rem;
   font-weight: 900;
   text-transform: uppercase;
-  margin-bottom: 10px;
 }
 
 .divider {
@@ -127,7 +125,7 @@ h1 {
   margin: 20px auto;
 }
 
-/* Professional Content Boxes */
+/* Content Boxes */
 .info-card {
   background: var(--light-gray);
   padding: 40px;
@@ -143,20 +141,9 @@ h1 {
   color: var(--primary-blue);
   font-size: 1.6rem;
   margin-top: 25px;
-  margin-bottom: 15px;
   text-transform: uppercase;
   border-bottom: 2px solid #ddd;
   padding-bottom: 5px;
-}
-
-.info-card h3:first-of-type {
-  margin-top: 0;
-}
-
-.info-card p {
-  margin: 10px 0;
-  line-height: 1.6;
-  font-size: 1.1rem;
 }
 
 .list-style {
@@ -175,10 +162,8 @@ h1 {
   content: "★";
   color: var(--accent-red);
   margin-right: 12px;
-  font-size: 1.2rem;
 }
 
-/* Action Buttons */
 .btn-primary {
   display: inline-block;
   background-color: var(--accent-red);
@@ -189,12 +174,6 @@ h1 {
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 2px;
-  transition: transform 0.2s, background-color 0.2s;
-}
-
-.btn-primary:hover {
-  transform: scale(1.05);
-  background-color: #a01826;
 }
 
 .contact-link {
@@ -206,26 +185,13 @@ h1 {
 
 /* Tab Switching Logic */
 .tab-content { display: none; }
-.tab-content.active { display: block; animation: fadeIn 0.4s ease-in; }
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+.tab-content.active { display: block; }
 
 footer {
   background: var(--primary-blue);
   color: white;
   padding: 50px 20px;
-  margin-top: 40px;
   font-size: 0.9rem;
-}
-
-/* Mobile Fixes */
-@media (max-width: 600px) {
-  h1 { font-size: 2.2rem; }
-  .candidate-img { width: 200px; height: 200px; }
-  .hero-container { margin-top: -80px; }
 }
 </style>
 </head>
@@ -242,7 +208,7 @@ footer {
 </div>
 
 <div class="hero-container">
-  <img src="IMG_7435.jpeg" alt="Candidate Dwayne Snyder" class="candidate-img">
+  <img src="IMG_7435.jpeg" alt="Dwayne Snyder" class="candidate-img">
 </div>
 
 <div id="home" class="tab-content active">
@@ -252,7 +218,7 @@ footer {
     <p style="font-size: 1.3rem; font-weight: 600;">Honest leadership, transparent government, and a safer future for every neighborhood in our city.</p>
 
     <div class="info-card">
-      <h3 style="border-bottom: none;">My Priorities</h3>
+      <h3 style="border-bottom: none; margin-top: 0;">My Priorities</h3>
       <ul class="list-style">
         <li>Safer neighborhoods through community policing</li>
         <li>Building a strong, sustainable local economy</li>
@@ -261,7 +227,7 @@ footer {
     </div>
 
     <h2 class="headline">Get Involved</h2>
-    <p>Join the movement to move our city forward. Reach out today:</p>
+    <p>Reach out today:</p>
     <p><a href="mailto:Me71643@yahoo.com" class="contact-link">Me71643@yahoo.com</a></p>
     <a href="mailto:Me71643@yahoo.com?subject=Volunteer" class="btn-primary">Join the Campaign</a>
     
@@ -323,7 +289,6 @@ footer {
 
 <footer>
   <p>PAID FOR BY THE COMMITTEE TO ELECT DWAYNE SNYDER</p>
-  <p style="opacity: 0.8; margin-top: 10px;">Lowell City Council Campaign | Contact: Me71643@yahoo.com</p>
 </footer>
 
 <script>
@@ -332,16 +297,14 @@ function openTab(evt, tabName) {
   tabcontent = document.getElementsByClassName("tab-content");
   for (i = 0; i < tabcontent.length; i++) {
     tabcontent[i].style.display = "none";
-    tabcontent[i].classList.remove("active");
   }
   tablinks = document.getElementsByClassName("tab-button");
   for (i = 0; i < tablinks.length; i++) {
     tablinks[i].className = tablinks[i].className.replace(" active", "");
   }
   document.getElementById(tabName).style.display = "block";
-  document.getElementById(tabName).classList.add("active");
   evt.currentTarget.className += " active";
-  window.scrollTo(0, 0); // Scroll to top when changing tabs
+  window.scrollTo(0, 0);
 }
 </script>
 
