@@ -25,14 +25,12 @@ body {
   text-align: center;
 }
 
-/* Header Section */
+/* Header Section - Image is now INSIDE here */
 header {
   background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 100%);
   color: var(--white);
-  padding: 60px 20px 140px 20px; /* Space for the candidate photo below */
+  padding: 60px 20px 40px 20px;
   border-bottom: 8px solid var(--accent-red);
-  position: relative;
-  z-index: 1; /* Keeping this low so nav can sit on top */
 }
 
 h1 {
@@ -48,20 +46,32 @@ h1 {
   font-family: 'Montserrat', sans-serif;
   font-size: 1.2rem;
   font-weight: 700;
-  margin-top: 15px;
+  margin: 10px 0 30px 0; /* Extra space before photo */
   letter-spacing: 6px;
   color: var(--gold-accent);
   text-transform: uppercase;
 }
 
-/* Navigation Tabs - FIXED OVERLAP ISSUE */
+/* The Photo - No longer using negative margins */
+.candidate-img {
+  width: 260px;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 8px solid var(--white);
+  box-shadow: 0px 10px 25px rgba(0,0,0,0.3);
+  display: block;
+  margin: 0 auto;
+}
+
+/* Ribbon - Now sits safely BELOW the photo */
 .tabs {
   display: flex;
   width: 100%;
   background: #1b263b;
   position: sticky;
   top: 0;
-  z-index: 1000; /* Extremely high so it always stays on top of the photo */
+  z-index: 999;
   border-bottom: 4px solid var(--accent-red);
 }
 
@@ -76,38 +86,18 @@ h1 {
   cursor: pointer;
   background: transparent;
   text-transform: uppercase;
-  transition: all 0.3s ease;
+  transition: 0.3s;
 }
 
 .tab-button.active {
   background: var(--accent-red);
 }
 
-.tab-button:hover:not(.active) {
-  background: rgba(255,255,255,0.1);
-}
-
-/* Hero Portrait - ADJUSTED LAYER */
-.hero-container {
-  margin-top: -100px; 
-  position: relative;
-  z-index: 10; /* Lower than the navigation ribbon (1000) */
-}
-
-.candidate-img {
-  width: 260px;
-  height: 260px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 10px solid var(--white);
-  box-shadow: 0px 15px 35px rgba(0,0,0,0.2);
-}
-
-/* Layout Containers */
+/* Content */
 .container {
   max-width: 900px;
   margin: 0 auto;
-  padding: 60px 20px;
+  padding: 40px 20px;
 }
 
 .headline {
@@ -125,7 +115,6 @@ h1 {
   margin: 20px auto;
 }
 
-/* Content Boxes */
 .info-card {
   background: var(--light-gray);
   padding: 40px;
@@ -133,7 +122,6 @@ h1 {
   margin: 40px 0;
   text-align: left;
   border-left: 8px solid var(--primary-blue);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
 .info-card h3 {
@@ -143,7 +131,6 @@ h1 {
   margin-top: 25px;
   text-transform: uppercase;
   border-bottom: 2px solid #ddd;
-  padding-bottom: 5px;
 }
 
 .list-style {
@@ -176,14 +163,6 @@ h1 {
   letter-spacing: 2px;
 }
 
-.contact-link {
-  color: var(--primary-blue);
-  font-weight: 700;
-  text-decoration: none;
-  border-bottom: 2px solid var(--accent-red);
-}
-
-/* Tab Switching Logic */
 .tab-content { display: none; }
 .tab-content.active { display: block; }
 
@@ -191,7 +170,6 @@ footer {
   background: var(--primary-blue);
   color: white;
   padding: 50px 20px;
-  font-size: 0.9rem;
 }
 </style>
 </head>
@@ -200,15 +178,12 @@ footer {
 <header>
   <h1>Dwayne Snyder</h1>
   <div class="subtitle">Experience You Can Trust</div>
+  <img src="IMG_7435.jpeg" alt="Dwayne Snyder" class="candidate-img">
 </header>
 
 <div class="tabs">
   <button class="tab-button active" onclick="openTab(event,'home')">Home</button>
   <button class="tab-button" onclick="openTab(event,'qualifications')">Qualifications</button>
-</div>
-
-<div class="hero-container">
-  <img src="IMG_7435.jpeg" alt="Dwayne Snyder" class="candidate-img">
 </div>
 
 <div id="home" class="tab-content active">
@@ -226,9 +201,6 @@ footer {
       </ul>
     </div>
 
-    <h2 class="headline">Get Involved</h2>
-    <p>Reach out today:</p>
-    <p><a href="mailto:Me71643@yahoo.com" class="contact-link">Me71643@yahoo.com</a></p>
     <a href="mailto:Me71643@yahoo.com?subject=Volunteer" class="btn-primary">Join the Campaign</a>
     
     <div style="margin-top: 30px;">
@@ -297,13 +269,15 @@ function openTab(evt, tabName) {
   tabcontent = document.getElementsByClassName("tab-content");
   for (i = 0; i < tabcontent.length; i++) {
     tabcontent[i].style.display = "none";
+    tabcontent[i].classList.remove("active");
   }
   tablinks = document.getElementsByClassName("tab-button");
   for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
+    tablinks[i].classList.remove("active");
   }
   document.getElementById(tabName).style.display = "block";
-  evt.currentTarget.className += " active";
+  document.getElementById(tabName).classList.add("active");
+  evt.currentTarget.classList.add("active");
   window.scrollTo(0, 0);
 }
 </script>
