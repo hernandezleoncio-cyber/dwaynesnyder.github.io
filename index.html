@@ -27,7 +27,7 @@
     header {
       background-color: var(--primary-blue);
       color: var(--white);
-      padding: 80px 20px 160px 20px;
+      padding: 80px 20px 120px 20px;
       border-bottom: 10px solid var(--accent-red);
     }
 
@@ -37,8 +37,6 @@
       font-weight: 800;
       margin: 0;
       text-transform: uppercase;
-      letter-spacing: 2px;
-      line-height: 1;
     }
 
     .subtitle {
@@ -46,39 +44,56 @@
       font-size: 1.5rem;
       font-weight: 700;
       margin-top: 15px;
-      color: var(--white);
-      text-transform: uppercase;
       letter-spacing: 5px;
     }
 
     .hero-container {
-      margin-top: -130px;
-      position: relative;
-      z-index: 10;
+      margin-top: -100px;
     }
 
     .candidate-img {
-      width: 280px;
-      height: 280px;
-      object-fit: cover;
+      width: 260px;
+      height: 260px;
       border-radius: 50%;
       border: 8px solid var(--white);
-      box-shadow: 0px 10px 30px rgba(0,0,0,0.15);
-      background-color: #eee;
     }
 
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
+    /* Tabs */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      background: var(--primary-blue);
+    }
+
+    .tab-button {
+      padding: 15px 25px;
+      cursor: pointer;
+      color: white;
+      font-weight: bold;
+      border: none;
+      background: none;
+    }
+
+    .tab-button.active {
+      background: var(--accent-red);
+    }
+
+    .tab-content {
+      display: none;
       padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .tab-content.active {
+      display: block;
     }
 
     .headline {
       font-family: 'Montserrat', sans-serif;
       color: var(--primary-blue);
-      font-size: 2.2rem;
+      font-size: 2rem;
       text-transform: uppercase;
-      margin-bottom: 10px;
     }
 
     .divider {
@@ -88,182 +103,108 @@
       margin: 20px auto;
     }
 
-    p {
-      font-size: 1.2rem;
-      line-height: 1.6;
-      color: #444;
-    }
-
-    .priorities-box {
-      background-color: var(--light-gray);
-      padding: 40px;
+    /* Recessed Resume Box */
+    .resume-box {
+      background: var(--light-gray);
+      padding: 30px;
       border-radius: 12px;
-      margin: 40px 0;
       text-align: left;
-      border-left: 5px solid var(--primary-blue);
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.05);
+      margin-top: 30px;
     }
 
-    .priorities-box h3 {
-      font-family: 'Montserrat', sans-serif;
+    .resume-box h3 {
       color: var(--primary-blue);
-      text-transform: uppercase;
-      margin-top: 0;
+      margin-top: 20px;
     }
 
     ul {
-      list-style: none;
-      padding: 0;
+      padding-left: 20px;
     }
 
-    li {
-      font-size: 1.15rem;
-      padding: 12px 0;
-      display: flex;
-      align-items: center;
-      border-bottom: 1px solid #ddd;
-    }
-
-    li:last-child { border-bottom: none; }
-
-    li::before {
-      content: "★";
-      color: var(--accent-red);
-      margin-right: 15px;
-      font-size: 1.2rem;
-    }
-
-    .section {
-      margin-top: 60px;
-      text-align: left;
-    }
-
-    .section h3 {
-      font-family: 'Montserrat', sans-serif;
-      color: var(--primary-blue);
-      text-transform: uppercase;
-    }
-
-    .btn {
-      display: inline-block;
-      background-color: var(--accent-red);
-      color: white;
-      padding: 18px 40px;
-      text-decoration: none;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: bold;
-      text-transform: uppercase;
-      border-radius: 5px;
-      margin: 20px 0;
-      transition: transform 0.2s, background 0.2s;
-    }
-
-    .btn:hover {
-      background-color: #b5151b;
-      transform: translateY(-2px);
-    }
-
-    .contact-link {
-      color: var(--primary-blue);
-      font-weight: 700;
-      text-decoration: none;
-      border-bottom: 2px solid var(--accent-red);
-    }
-
-    .footer-section {
-      margin-top: 40px;
-      padding-bottom: 60px;
-    }
-
-    .qr-code {
-      width: 150px;
-      height: auto;
-      margin-top: 20px;
-      padding: 10px;
-      background: white;
-      border: 1px solid #ccc;
-    }
   </style>
 </head>
 
 <body>
 
-  <header>
-    <h1>Dwayne Snyder</h1>
-    <div class="subtitle">For City Council</div>
-  </header>
+<header>
+  <h1>Dwayne Snyder</h1>
+  <div class="subtitle">For City Council</div>
+</header>
 
-  <div class="hero-container">
-    <img src="IMG_7435.jpeg" alt="Candidate Dwayne Snyder" class="candidate-img">
+<div class="hero-container">
+  <img src="IMG_7435.jpeg" class="candidate-img">
+</div>
+
+<!-- TAB NAV -->
+<div class="tabs">
+  <button class="tab-button active" onclick="openTab('home')">Home</button>
+  <button class="tab-button" onclick="openTab('qualifications')">Qualifications</button>
+</div>
+
+<!-- HOME TAB -->
+<div id="home" class="tab-content active">
+  <h2 class="headline">Putting Our Community First</h2>
+  <div class="divider"></div>
+  <p>Honest leadership, transparent government, and a safer future for every neighborhood.</p>
+</div>
+
+<!-- QUALIFICATIONS TAB -->
+<div id="qualifications" class="tab-content">
+  <h2 class="headline">Qualifications</h2>
+  <div class="divider"></div>
+
+  <p>
+    Dwayne Snyder brings over 35 years of financial leadership and public service experience. 
+    As a former Mayor and City Council member, he understands how to manage budgets, support growth, 
+    and serve the community with integrity.
+  </p>
+
+  <!-- RESUME BOX -->
+  <div class="resume-box">
+
+    <h3>Professional Summary</h3>
+    <p>35+ years in banking, finance, and public leadership including Mayor and City Council service.</p>
+
+    <h3>Core Experience</h3>
+    <ul>
+      <li>Mayor of Star City</li>
+      <li>10 years City Council (Budget Chairman)</li>
+      <li>35+ years financial management</li>
+      <li>Economic Development Director</li>
+    </ul>
+
+    <h3>Professional Experience</h3>
+    <ul>
+      <li>Ashley Furniture (2015–Present)</li>
+      <li>Mayor — Star City (2014)</li>
+      <li>Economic Development Director (2010–2013)</li>
+      <li>Branch Manager — Simmons Bank (1991–2010)</li>
+      <li>Assistant VP — Merchants & Farmers Bank</li>
+    </ul>
+
+    <h3>Education</h3>
+    <ul>
+      <li>Graduate School of Banking — LSU</li>
+      <li>Arkansas Bankers Management School</li>
+      <li>Arkansas Bankers Lending School</li>
+    </ul>
+
   </div>
+</div>
 
-  <div class="container">
-    <h2 class="headline">Putting Our Community First</h2>
-    <div class="divider"></div>
-    <p>Honest leadership, transparent government, and a safer future for every neighborhood in our city.</p>
+<script>
+function openTab(tabName) {
+  let tabs = document.querySelectorAll(".tab-content");
+  let buttons = document.querySelectorAll(".tab-button");
 
-    <div class="priorities-box">
-      <h3>My Priorities</h3>
-      <ul>
-        <li>Safer neighborhoods through community policing</li>
-        <li>Building a strong, sustainable local economy</li>
-        <li>Responsible development and infrastructure</li>
-      </ul>
-    </div>
+  tabs.forEach(t => t.classList.remove("active"));
+  buttons.forEach(b => b.classList.remove("active"));
 
-    <!-- NEW QUALIFICATIONS SECTION -->
-    <div class="section">
-      <h2 class="headline">Qualifications</h2>
-      <div class="divider"></div>
-
-      <p>
-        Dwayne Snyder brings over 35 years of financial leadership and public service experience to the Lowell community. 
-        As a former Mayor and long-time City Council member, he understands how local government works and how to make 
-        responsible, practical decisions that benefit residents.
-      </p>
-      <p>
-        His career in banking and budgeting provides a strong foundation for managing taxpayer dollars with discipline and transparency. 
-        Dwayne has worked closely with local businesses, led economic development efforts, and remained actively involved in community organizations.
-      </p>
-      <p>
-        His experience, leadership, and commitment to service make him well-qualified to represent the citizens of Lowell with integrity and accountability.
-      </p>
-
-      <div class="priorities-box">
-        <h3>Core Experience</h3>
-        <ul>
-          <li>Former Mayor with hands-on city leadership experience</li>
-          <li>10 years serving on City Council, including Budget Chairman</li>
-          <li>35+ years in banking, finance, and budget management</li>
-          <li>Economic Development Director focused on local growth</li>
-          <li>Proven leadership in business and community organizations</li>
-        </ul>
-      </div>
-
-      <div class="priorities-box">
-        <h3>Professional Background</h3>
-        <ul>
-          <li>Ashley Furniture — Rogers, AR (2015–Present)</li>
-          <li>Mayor — Star City, AR (2014)</li>
-          <li>Economic Development Director — Star City, AR (2010–2013)</li>
-          <li>Branch Manager — Simmons First National Bank (1991–2010)</li>
-          <li>Assistant Vice President — Merchants and Farmers Bank</li>
-        </ul>
-      </div>
-
-    </div>
-
-    <div class="footer-section">
-      <h2 class="headline">Get Involved</h2>
-      <p>Join the movement to move our city forward. Reach out today:</p>
-      <p><a href="mailto:Me71643@yahoo.com" class="contact-link">Me71643@yahoo.com</a></p>
-      
-      <a href="mailto:Me71643@yahoo.com?subject=Volunteer" class="btn">Join the Campaign</a>
-      
-      <br>
-      <img src="QR.png" alt="Scan to Learn More" class="qr-code">
-      <p style="font-size: 0.9rem; color: #888; margin-top: 10px;">Scan to learn more about our platform.</p>
-    </div>
-  </div>
+  document.getElementById(tabName).classList.add("active");
+  event.target.classList.add("active");
+}
+</script>
 
 </body>
 </html>
