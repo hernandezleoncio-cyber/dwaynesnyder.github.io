@@ -24,10 +24,11 @@
       text-align: center;
     }
 
+    /* Header */
     header {
       background-color: var(--primary-blue);
       color: var(--white);
-      padding: 40px 20px 40px 20px; /* reduced to make tabs fit nicely */
+      padding: 40px 20px 20px 20px; /* top padding larger for spacing */
       border-bottom: 10px solid var(--accent-red);
       position: relative;
       z-index: 10;
@@ -46,12 +47,13 @@
       font-family: 'Montserrat', sans-serif;
       font-size: 1.5rem;
       font-weight: 700;
-      margin-top: 15px;
+      margin-top: 10px;
       letter-spacing: 5px;
     }
 
+    /* Hero Image */
     .hero-container {
-      margin-top: 20px; /* small margin below header */
+      margin-top: 20px;
       position: relative;
       z-index: 5;
     }
@@ -71,9 +73,8 @@
       justify-content: center;
       background: var(--primary-blue);
       border-bottom: 4px solid var(--accent-red);
-      margin-top: 20px;
       position: relative;
-      z-index: 15;
+      z-index: 100; /* ensures visible above header/hero */
     }
 
     .tab-button {
@@ -95,6 +96,7 @@
       background: rgba(215,26,33,0.2);
     }
 
+    /* Tab content */
     .tab-content {
       display: none;
     }
@@ -103,6 +105,7 @@
       display: block;
     }
 
+    /* General containers */
     .container {
       max-width: 800px;
       margin: 0 auto;
@@ -199,7 +202,6 @@
       text-decoration: none;
       border-bottom: 2px solid var(--accent-red);
     }
-
   </style>
 </head>
 
@@ -209,13 +211,13 @@
   <h1>Dwayne Snyder</h1>
   <div class="subtitle">For City Council</div>
   
-  <!-- TABS INSIDE HEADER -->
+  <!-- TABS AT TOP -->
   <div class="tabs">
     <button class="tab-button active" onclick="openTab(event,'home')">Home</button>
     <button class="tab-button" onclick="openTab(event,'qualifications')">Qualifications</button>
   </div>
 </header>
-  
+
 <div class="hero-container">
   <img src="IMG_7435.jpeg" class="candidate-img">
 </div>
