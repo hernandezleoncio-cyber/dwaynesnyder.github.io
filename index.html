@@ -73,8 +73,10 @@
       justify-content: center;
       background: var(--primary-blue);
       border-bottom: 4px solid var(--accent-red);
-      position: relative;
-      z-index: 100; /* ensures visible above header/hero */
+      position: sticky; /* Make tabs sticky */
+      top: 0;
+      z-index: 100; /* stays above content */
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* optional shadow */
     }
 
     .tab-button {
@@ -210,13 +212,13 @@
 <header>
   <h1>Dwayne Snyder</h1>
   <div class="subtitle">For City Council</div>
-  
-  <!-- TABS AT TOP -->
-  <div class="tabs">
-    <button class="tab-button active" onclick="openTab(event,'home')">Home</button>
-    <button class="tab-button" onclick="openTab(event,'qualifications')">Qualifications</button>
-  </div>
 </header>
+
+<!-- TABS AT TOP -->
+<div class="tabs">
+  <button class="tab-button active" onclick="openTab(event,'home')">Home</button>
+  <button class="tab-button" onclick="openTab(event,'qualifications')">Qualifications</button>
+</div>
 
 <div class="hero-container">
   <img src="IMG_7435.jpeg" class="candidate-img">
