@@ -78,29 +78,60 @@ h1 {
 .tabs {
   display: flex;
   width: 100%;
-  background: #1b263b;
+  background: var(--primary-blue);
   position: sticky;
   top: 0;
-  z-index: 999;
+  z-index: 1000;
+  /* Thin gold line across the top for class */
+  border-top: 1px solid var(--gold-accent); 
+  /* Bold red line across the bottom */
   border-bottom: 4px solid var(--accent-red);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
 .tab-button {
   flex: 1;
-  padding: 18px 0;
+  padding: 20px 10px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 800;
-  font-size: 0.9rem;
-  color: var(--white);
+  font-size: 0.85rem; /* Slightly smaller for better fit */
+  color: rgba(255, 255, 255, 0.7); /* Dim the inactive text slightly */
   border: none;
+  /* Add a vertical divider between buttons */
+  border-right: 1px solid rgba(255, 255, 255, 0.1); 
   cursor: pointer;
   background: transparent;
   text-transform: uppercase;
-  transition: 0.3s;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  outline: none;
 }
 
+/* Remove the last divider so it looks clean */
+.tab-button:last-child {
+  border-right: none;
+}
+
+/* THE ACTIVE TAB - Make it scream "Look here!" */
 .tab-button.active {
+  color: var(--white);
   background: var(--accent-red);
+  /* Add a gold "glow" or bottom bar to the active tab */
+  box-shadow: inset 0 -4px 0px var(--gold-accent);
+}
+
+/* THE HOVER - Make it feel interactive */
+.tab-button:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+}
+
+/* Mobile Tweak: Stack them if the text gets too long */
+@media (max-width: 480px) {
+  .tab-button {
+    font-size: 0.7rem;
+    padding: 15px 5px;
+  }
 }
 
 /* Content */
