@@ -241,6 +241,30 @@ footer {
   background-color: #a01826;
   transform: translateY(-2px);
 }
+  /* Ensure the list items have enough vertical space */
+.list-style li {
+    margin-bottom: 1.25rem; /* Adds space between each priority */
+    line-height: 1.5;      /* Improves readability */
+    display: block;        /* Ensures the description can wrap naturally */
+}
+
+/* If you want the labels and descriptions to sit better together */
+.list-style li strong {
+    display: inline-block;
+    margin-right: 5px;     /* Small gap after the colon */
+    color: #1a365d;        /* Match your header blue if desired */
+}
+
+/* Optional: Add a little more space above the category headers */
+.info-card p strong {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    border-bottom: 1px solid #eee; /* Light separator */
+    padding-bottom: 5px;
+}
+
 
 .download-icon {
   margin-right: 12px;
