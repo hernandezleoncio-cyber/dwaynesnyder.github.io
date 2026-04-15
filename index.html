@@ -59,13 +59,9 @@ header::before {
   pointer-events: none;
 }
 
-/* Gold top bar */
+/* Gold line now lives on ticker above header */
 header::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 6px;
-  background: linear-gradient(90deg, var(--red), var(--gold), var(--red));
+  display: none;
 }
 
 .header-eyebrow {
@@ -1030,8 +1026,8 @@ footer {
 /* ── TICKER RIBBON ── */
 .ticker-wrap {
   background: var(--navy);
-  border-top: 2px solid var(--gold);
-  border-bottom: 2px solid var(--gold);
+  border-top: 4px solid var(--gold);
+  border-bottom: 2px solid rgba(200,151,58,0.3);
   overflow: hidden;
   padding: 10px 0;
   position: relative;
@@ -1096,21 +1092,9 @@ footer {
 </head>
 <body>
 
-<!-- ══════════════ HEADER ══════════════ -->
-<header>
-  <div class="header-eyebrow">Lowell City Council · Ward 4 · Position 2</div>
-  <h1>Dwayne<span>Snyder</span></h1>
-  <div class="header-tagline">Experience You Can Trust</div>
-  <div class="photo-wrap">
-    <img src="IMG_7435.jpeg" alt="Dwayne Snyder" class="candidate-img">
-  </div>
-</header>
-<div class="header-bar"></div>
-
 <!-- ══════════════ TICKER RIBBON ══════════════ -->
 <div class="ticker-wrap" aria-hidden="true">
   <div class="ticker-track">
-    <!-- First copy -->
     <span class="ticker-item"><strong>Your Vote Matters</strong> — Make Your Voice Heard in Lowell<span class="dot">★</span></span>
     <span class="ticker-item">40+ Years of Financial Leadership &amp; Public Service<span class="dot">★</span></span>
     <span class="ticker-item"><strong>Election Day Is Coming</strong> — Are You Registered?<span class="dot">★</span></span>
@@ -1119,7 +1103,6 @@ footer {
     <span class="ticker-item">Former Mayor · Budget Chairman · 36-Year Banking Professional<span class="dot">★</span></span>
     <span class="ticker-item"><strong>Ward 4 · Position 2</strong> — Lowell City Council<span class="dot">★</span></span>
     <span class="ticker-item">Every Vote Counts — Especially in Local Elections<span class="dot">★</span></span>
-    <!-- Duplicate for seamless loop -->
     <span class="ticker-item"><strong>Your Vote Matters</strong> — Make Your Voice Heard in Lowell<span class="dot">★</span></span>
     <span class="ticker-item">40+ Years of Financial Leadership &amp; Public Service<span class="dot">★</span></span>
     <span class="ticker-item"><strong>Election Day Is Coming</strong> — Are You Registered?<span class="dot">★</span></span>
@@ -1130,6 +1113,17 @@ footer {
     <span class="ticker-item">Every Vote Counts — Especially in Local Elections<span class="dot">★</span></span>
   </div>
 </div>
+
+<!-- ══════════════ HEADER ══════════════ -->
+<header>
+  <div class="header-eyebrow">Lowell City Council · Ward 4 · Position 2</div>
+  <h1>Dwayne<span>Snyder</span></h1>
+  <div class="header-tagline">Experience You Can Trust</div>
+  <div class="photo-wrap">
+    <img src="IMG_7435.jpeg" alt="Dwayne Snyder" class="candidate-img">
+  </div>
+</header>
+<div class="header-bar"></div>
 
 <!-- ══════════════ NAV ══════════════ -->
 <nav>
