@@ -1,461 +1,806 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-S2CWC8G241"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-S2CWC8G241');
-</script>
-  
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dwayne Snyder | For City Council</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --primary-blue: #0d1b2a;
-  --accent-red: #be1e2d;
-  --gold-accent: #c5a059;
-  --white: #ffffff;
-  --light-gray: #f8f9fa;
+  --navy: #0a1628;
+  --red: #c0202f;
+  --gold: #c8973a;
+  --off-white: #f5f0e8;
+  --light: #fafaf7;
+  --text: #1c1c2e;
 }
 
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
 body {
-  font-family: 'Open Sans', sans-serif;
-  margin: 0;
-  padding: 0;
-  color: #1b263b;
-  background-color: var(--white);
+  font-family: 'Source Sans 3', sans-serif;
+  background: var(--light);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ── HEADER ── */
+header {
+  position: relative;
+  background: var(--navy);
+  overflow: hidden;
+  padding: 70px 20px 50px;
   text-align: center;
 }
 
-/* Header Section - Image is now INSIDE here */
-header {
-  background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 100%);
-  color: var(--white);
-  padding: 60px 20px 40px 20px;
-  border-bottom: 8px solid var(--accent-red);
+/* Diagonal stripe texture */
+header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -55deg,
+    transparent,
+    transparent 40px,
+    rgba(255,255,255,0.025) 40px,
+    rgba(255,255,255,0.025) 41px
+  );
+  pointer-events: none;
+}
+
+/* Gold top bar */
+header::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--red), var(--gold), var(--red));
+}
+
+.header-eyebrow {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 6px;
+  font-size: 0.95rem;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  opacity: 0;
+  animation: fadeUp 0.7s ease 0.1s forwards;
 }
 
 h1 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: clamp(2.5rem, 10vw, 4.5rem);
-  font-weight: 900;
-  margin: 0;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(4rem, 14vw, 8rem);
+  color: #fff;
+  line-height: 0.9;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  letter-spacing: -1px;
+  opacity: 0;
+  animation: fadeUp 0.7s ease 0.25s forwards;
 }
 
-.subtitle {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.2rem;
-  font-weight: 700;
-  margin: 10px 0 30px 0; /* Extra space before photo */
-  letter-spacing: 6px;
-  color: var(--gold-accent);
-  text-transform: uppercase;
-}
-
-/* The Photo - No longer using negative margins */
-.candidate-img {
-  width: 260px;
-  height: 260px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 8px solid var(--white);
-  box-shadow: 0px 10px 25px rgba(0,0,0,0.3);
+h1 span {
   display: block;
-  margin: 0 auto;
+  color: var(--gold);
 }
 
-/* Ribbon - Now sits safely BELOW the photo */
-.tabs {
+.header-tagline {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: 14px;
+  margin-bottom: 36px;
+  opacity: 0;
+  animation: fadeUp 0.7s ease 0.4s forwards;
+}
+
+/* Photo with decorative frame */
+.photo-wrap {
+  position: relative;
+  display: inline-block;
+  opacity: 0;
+  animation: fadeUp 0.7s ease 0.55s forwards;
+}
+
+.photo-wrap::before {
+  content: '';
+  position: absolute;
+  top: -10px; left: -10px;
+  width: calc(100% + 20px);
+  height: calc(100% + 20px);
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  opacity: 0.5;
+}
+
+.candidate-img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #fff;
+  display: block;
+  filter: grayscale(20%);
+}
+
+/* Red bar below header */
+.header-bar {
+  height: 8px;
+  background: var(--red);
+}
+
+/* ── NAV TABS ── */
+nav {
+  background: var(--navy);
   display: flex;
-  width: 100%;
-  background: var(--primary-blue);
   position: sticky;
   top: 0;
-  z-index: 1000;
-  /* Thin gold line across the top for class */
-  border-top: 1px solid var(--gold-accent); 
-  /* Bold red line across the bottom */
-  border-bottom: 4px solid var(--accent-red);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 999;
+  border-bottom: 3px solid var(--red);
 }
 
 .tab-button {
   flex: 1;
-  padding: 20px 10px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 800;
-  font-size: 0.85rem; /* Slightly smaller for better fit */
-  color: rgba(255, 255, 255, 0.7); /* Dim the inactive text slightly */
-  border: none;
-  /* Add a vertical divider between buttons */
-  border-right: 1px solid rgba(255, 255, 255, 0.1); 
-  cursor: pointer;
+  padding: 18px 10px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.05rem;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.5);
   background: transparent;
+  border: none;
+  border-right: 1px solid rgba(255,255,255,0.07);
+  cursor: pointer;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
-  outline: none;
+  transition: color 0.2s, background 0.2s;
+  position: relative;
 }
 
-/* Remove the last divider so it looks clean */
-.tab-button:last-child {
-  border-right: none;
+.tab-button:last-child { border-right: none; }
+
+.tab-button::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%; right: 50%;
+  height: 3px;
+  background: var(--gold);
+  transition: left 0.3s ease, right 0.3s ease;
 }
 
-/* THE ACTIVE TAB - Make it scream "Look here!" */
 .tab-button.active {
-  color: var(--white);
-  background: var(--accent-red);
-  /* Add a gold "glow" or bottom bar to the active tab */
-  box-shadow: inset 0 -4px 0px var(--gold-accent);
+  color: #fff;
+  background: rgba(192, 32, 47, 0.15);
 }
 
-/* THE HOVER - Make it feel interactive */
+.tab-button.active::after {
+  left: 0; right: 0;
+}
+
 .tab-button:hover:not(.active) {
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--white);
+  color: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.05);
 }
 
-/* Mobile Tweak: Stack them if the text gets too long */
-@media (max-width: 480px) {
-  .tab-button {
-    font-size: 0.7rem;
-    padding: 15px 5px;
-  }
+/* ── TAB CONTENT ── */
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* ── HOME HERO STRIP ── */
+.hero-strip {
+  background: var(--red);
+  color: #fff;
+  text-align: center;
+  padding: 28px 20px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.3rem, 4vw, 2rem);
+  letter-spacing: 4px;
+  text-transform: uppercase;
 }
 
-/* Content */
+.hero-strip em {
+  font-style: normal;
+  color: var(--gold);
+}
+
+/* ── CONTAINER ── */
 .container {
-  max-width: 900px;
+  max-width: 880px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 60px 24px;
 }
 
-.headline {
-  font-family: 'Montserrat', sans-serif;
-  color: var(--primary-blue);
-  font-size: 2.5rem;
+/* ── SECTION HEADING ── */
+.section-heading {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.section-heading .label {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 5px;
+  font-size: 0.8rem;
+  color: var(--red);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.section-heading h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 900;
+  color: var(--navy);
+  line-height: 1.1;
+}
+
+.section-heading .rule {
+  width: 60px;
+  height: 4px;
+  background: var(--gold);
+  margin: 16px auto 0;
+}
+
+/* ── PRIORITY CARDS ── */
+.priority-group {
+  margin-bottom: 48px;
+}
+
+.priority-group-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 3px;
+  color: var(--navy);
   text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
 }
 
-.divider {
-  width: 100px;
-  height: 6px;
-  background-color: var(--accent-red);
-  margin: 20px auto;
+.priority-group-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(10,22,40,0.2), transparent);
 }
 
-.info-card {
-  background: var(--light-gray);
-  padding: 40px;
-  border-radius: 4px;
-  margin: 40px 0;
-  text-align: left;
-  border-left: 8px solid var(--primary-blue);
+.priority-number {
+  background: var(--red);
+  color: #fff;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-.info-card h3 {
-  font-family: 'Montserrat', sans-serif;
-  color: var(--primary-blue);
-  font-size: 1.6rem;
-  margin-top: 25px;
+.priority-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.priority-card {
+  background: #fff;
+  border-top: 4px solid var(--navy);
+  padding: 24px 22px;
+  border-radius: 2px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.priority-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+.priority-card.accent { border-top-color: var(--red); }
+.priority-card.gold   { border-top-color: var(--gold); }
+
+.priority-card h4 {
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+.priority-card p {
+  font-size: 0.92rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* ── CTA BAND ── */
+.cta-band {
+  background: var(--navy);
+  text-align: center;
+  padding: 60px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-band::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -55deg,
+    transparent, transparent 40px,
+    rgba(255,255,255,0.02) 40px,
+    rgba(255,255,255,0.02) 41px
+  );
+}
+
+.cta-band h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  color: #fff;
+  letter-spacing: 3px;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.cta-band p {
+  color: rgba(255,255,255,0.55);
+  font-size: 1rem;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.btn-cta {
+  display: inline-block;
+  background: var(--red);
+  color: #fff;
+  padding: 16px 44px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 3px;
+  text-decoration: none;
   text-transform: uppercase;
-  border-bottom: 2px solid #ddd;
+  border: 2px solid var(--red);
+  transition: background 0.2s, color 0.2s;
+  position: relative;
 }
 
-.list-style {
+.btn-cta:hover {
+  background: transparent;
+  color: #fff;
+  border-color: var(--gold);
+}
+
+/* ── QR SECTION ── */
+.qr-section {
+  text-align: center;
+  padding: 40px 24px 0;
+}
+
+.qr-section img {
+  width: 130px;
+  border: 1px solid #ddd;
+  padding: 6px;
+  background: #fff;
+}
+
+.qr-section p {
+  font-size: 0.78rem;
+  color: #999;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+
+/* ── QUALIFICATIONS ── */
+.qual-intro {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #444;
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 50px;
+}
+
+.qual-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+@media (max-width: 640px) {
+  .qual-grid { grid-template-columns: 1fr; }
+}
+
+.qual-block {
+  background: #fff;
+  padding: 30px;
+  border-radius: 2px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  border-left: 5px solid var(--navy);
+}
+
+.qual-block.red  { border-left-color: var(--red); }
+.qual-block.gold { border-left-color: var(--gold); }
+
+.qual-block h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.25rem;
+  letter-spacing: 2px;
+  color: var(--navy);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.qual-block ul {
   list-style: none;
   padding: 0;
 }
 
-.list-style li {
-  font-size: 1.1rem;
-  padding: 8px 0;
+.qual-block ul li {
+  font-size: 0.95rem;
+  color: #444;
+  padding: 6px 0;
+  border-bottom: 1px solid #f0f0f0;
   display: flex;
   align-items: flex-start;
+  gap: 10px;
+  line-height: 1.5;
 }
 
-.list-style li::before {
-  content: "★";
-  color: var(--accent-red);
-  margin-right: 12px;
+.qual-block ul li::before {
+  content: '—';
+  color: var(--red);
+  flex-shrink: 0;
+  font-weight: 700;
 }
 
-.btn-primary {
-  display: inline-block;
-  background-color: var(--accent-red);
-  color: white;
-  padding: 20px 50px;
-  text-decoration: none;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 900;
+.qual-block ul li:last-child { border-bottom: none; }
+
+.stat-row {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  background: var(--navy);
+  padding: 40px 24px;
+  margin-top: 50px;
+}
+
+.stat {
+  text-align: center;
+  color: #fff;
+}
+
+.stat .num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3.5rem;
+  color: var(--gold);
+  line-height: 1;
+  display: block;
+}
+
+.stat .lbl {
+  font-size: 0.75rem;
+  letter-spacing: 3px;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  color: rgba(255,255,255,0.5);
+  display: block;
+  margin-top: 6px;
 }
 
-.tab-content { display: none; }
-.tab-content.active { display: block; }
-
-footer {
-  background: var(--primary-blue);
-  color: white;
-  padding: 50px 20px;
+/* ── REGISTRATION ── */
+.reg-callout {
+  background: var(--off-white);
+  border: 2px solid var(--navy);
+  border-radius: 2px;
+  padding: 40px;
+  text-align: center;
+  margin-bottom: 40px;
 }
 
-  .download-area {
-  background: var(--light-gray);
-  padding: 30px;
-  border-radius: 8px;
-  border: 2px dashed var(--primary-blue);
-  margin: 30px 0;
+.reg-callout h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 3px;
+  color: var(--navy);
+  margin-bottom: 10px;
 }
 
-.btn-download-pdf {
+.reg-callout p { color: #555; margin-bottom: 24px; line-height: 1.7; }
+
+.btn-download {
   display: inline-flex;
   align-items: center;
-  background-color: var(--accent-red);
-  color: white;
-  padding: 15px 30px;
+  gap: 10px;
+  background: var(--navy);
+  color: #fff;
+  padding: 16px 36px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
   text-decoration: none;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  border-radius: 4px;
-  transition: transform 0.2s, background-color 0.2s;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border: 2px solid var(--navy);
+  transition: background 0.2s, color 0.2s;
 }
 
-.btn-download-pdf:hover {
-  background-color: #a01826;
-  transform: translateY(-2px);
-}
-  /* Ensure the list items have enough vertical space */
-.list-style li {
-    margin-bottom: 1.25rem; /* Adds space between each priority */
-    line-height: 1.5;      /* Improves readability */
-    display: block;        /* Ensures the description can wrap naturally */
+.btn-download:hover {
+  background: var(--red);
+  border-color: var(--red);
 }
 
-/* If you want the labels and descriptions to sit better together */
-.list-style li strong {
-    display: inline-block;
-    margin-right: 5px;     /* Small gap after the colon */
-    color: #1a365d;        /* Match your header blue if desired */
+.pdf-embed-wrap {
+  border: 3px solid var(--navy);
+  border-radius: 2px;
+  overflow: hidden;
 }
 
-/* Optional: Add a little more space above the category headers */
-.info-card p strong {
-    display: block;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    font-size: 1.1em;
-    border-bottom: 1px solid #eee; /* Light separator */
-    padding-bottom: 5px;
+/* ── FOOTER ── */
+footer {
+  background: #060e1a;
+  color: rgba(255,255,255,0.35);
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 0.78rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  border-top: 4px solid var(--red);
 }
 
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 
-.download-icon {
-  margin-right: 12px;
-  font-size: 1.2rem;
+@media (max-width: 480px) {
+  .tab-button { font-size: 0.8rem; padding: 14px 6px; letter-spacing: 1px; }
+  .priority-cards { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 <body>
 
+<!-- ══════════════ HEADER ══════════════ -->
 <header>
-  <h1>Dwayne Snyder</h1>
-  <div class="subtitle">Experience You Can Trust</div>
-  <div class="subtitle">Lowell City Council Ward 4 - Position 2</div>
-  <img src="IMG_7435.jpeg" alt="Dwayne Snyder" class="candidate-img">
+  <div class="header-eyebrow">Lowell City Council · Ward 4 · Position 2</div>
+  <h1>Dwayne<span>Snyder</span></h1>
+  <div class="header-tagline">Experience You Can Trust</div>
+  <div class="photo-wrap">
+    <img src="IMG_7435.jpeg" alt="Dwayne Snyder" class="candidate-img">
+  </div>
 </header>
+<div class="header-bar"></div>
 
-<div class="tabs">
+<!-- ══════════════ NAV ══════════════ -->
+<nav>
   <button class="tab-button active" onclick="openTab(event,'home')">Home</button>
   <button class="tab-button" onclick="openTab(event,'qualifications')">Qualifications</button>
-  <button class="tab-button" onclick="openTab(event,'registration')">Voter Registration</button>
-</div>
+  <button class="tab-button" onclick="openTab(event,'registration')">Register to Vote</button>
+</nav>
 
+<!-- ══════════════ HOME ══════════════ -->
 <div id="home" class="tab-content active">
+
+  <div class="hero-strip">
+    Honest Leadership · Transparent Government · <em>A Safer Future</em>
+  </div>
+
   <div class="container">
-    <h2 class="headline">Putting Our Community First</h2>
-    <div class="divider"></div>
-    <p style="font-size: 1.3rem; font-weight: 600;">Honest leadership, transparent government, and a safer future for every neighborhood in our city.</p>
+    <div class="section-heading">
+      <span class="label">Platform</span>
+      <h2>Putting Our Community First</h2>
+      <div class="rule"></div>
+    </div>
 
-   <div class="info-card">
-  <h3 style="border-bottom: none; margin-top: 0;">My Priorities</h3>
+    <!-- GROUP 1 -->
+    <div class="priority-group">
+      <div class="priority-group-title">
+        <span class="priority-number">01</span>
+        Fiscal Responsibility & Smarter Governance
+      </div>
+      <div class="priority-cards">
+        <div class="priority-card">
+          <h4>Budget-First Leadership</h4>
+          <p>Prioritizing essential services to ensure every tax dollar is used efficiently.</p>
+        </div>
+        <div class="priority-card accent">
+          <h4>Modernized Bidding Practices</h4>
+          <p>Transparent, competitive bidding so the city receives the highest quality work at fair market price.</p>
+        </div>
+        <div class="priority-card gold">
+          <h4>Professional Oversight</h4>
+          <p>A dedicated City Engineer to keep infrastructure projects on schedule and under budget.</p>
+        </div>
+      </div>
+    </div>
 
-<p style="font-size: 1.2rem; margin-top: 20px;">
-  <strong>Fiscal Responsibility & Smarter Governance</strong>
-</p>
+    <!-- GROUP 2 -->
+    <div class="priority-group">
+      <div class="priority-group-title">
+        <span class="priority-number">02</span>
+        Public Safety & Community Stability
+      </div>
+      <div class="priority-cards">
+        <div class="priority-card accent">
+          <h4>Proactive Safety</h4>
+          <p>Supporting first responders with the resources and specialized training needed.</p>
+        </div>
+        <div class="priority-card">
+          <h4>Risk Management</h4>
+          <p>Eliminating avoidable lawsuits by improving city protocols and protecting the treasury.</p>
+        </div>
+        <div class="priority-card gold">
+          <h4>Equipment Reliability</h4>
+          <p>A systematic plan to update municipal equipment for safety and lower long-term costs.</p>
+        </div>
+      </div>
+    </div>
 
-     
-  
-  <ul class="list-style">
-    <li><strong>Budget-First Leadership:</strong> Prioritizing essential services to ensure every tax dollar is used efficiently.</li>
-    <li><strong>Modernized Bidding Practices:</strong> Implementing transparent, competitive bidding to ensure the city receives the highest quality work at the fair market price.</li>
-    <li><strong>Professional Oversight:</strong> Hiring a dedicated City Engineer to oversee infrastructure projects, ensuring they stay on schedule and under budget.</li>
-  </ul>
-<p style="font-size: 1.2rem; margin-top: 20px;">
-  <strong>Public Safety & Community Stability</strong>
-</p>
-
-  <ul class="list-style">
-    <li><strong>Proactive Safety:</strong> Supporting first responders with the resources and specialized training needed to keep our neighborhoods responsive.</li>
-    <li><strong>Risk Management:</strong> Eliminating avoidable lawsuits by improving city protocols and protecting the city treasury.</li>
-    <li><strong>Equipment Reliability:</strong> Implementing a systematic plan to update municipal equipment for better safety and lower long-term repair costs.</li>
-  </ul>
-<p style="font-size: 1.2rem; margin-top: 20px;">
-  <strong>Economic Growth: Making Lowell a Destination</strong>
-</p>
-
-
-  <ul class="list-style">
-    <li><strong>From "Pass-Through" to "Place-to-Be":</strong> Advocating for downtown revitalization and beautification to turn our corridors into vibrant hubs.</li>
-    <li><strong>Strategic Development:</strong> Creating "destination" draws through parks, events, and walkability to capture the economic energy of our region.</li>
-  </ul>
-</div>
-
-    <a href="mailto:Me71643@yahoo.com?subject=Volunteer" class="btn-primary">Join the Campaign</a>
-    
-    <div style="margin-top: 30px;">
-      <img src="QR.png" alt="Scan to Learn More" style="width: 150px; border: 1px solid #ddd; padding: 5px;">
+    <!-- GROUP 3 -->
+    <div class="priority-group">
+      <div class="priority-group-title">
+        <span class="priority-number">03</span>
+        Economic Growth: Making Lowell a Destination
+      </div>
+      <div class="priority-cards">
+        <div class="priority-card">
+          <h4>Downtown Revitalization</h4>
+          <p>Beautification and investment to turn our corridors into vibrant, welcoming hubs.</p>
+        </div>
+        <div class="priority-card accent">
+          <h4>Strategic Development</h4>
+          <p>Parks, events, and walkability to capture the full economic energy of our region.</p>
+        </div>
+      </div>
     </div>
   </div>
+
+  <div class="cta-band">
+    <h3>Get Involved Today</h3>
+    <p>Your support makes the difference on election day.</p>
+    <a href="mailto:Me71643@yahoo.com?subject=Volunteer" class="btn-cta">Join the Campaign</a>
+  </div>
+
+  <div class="qr-section">
+    <img src="QR.png" alt="Scan to visit this site">
+    <p>Scan to share this site</p>
+  </div>
+  <br><br>
+
 </div>
 
+<!-- ══════════════ QUALIFICATIONS ══════════════ -->
 <div id="qualifications" class="tab-content">
+
+  <div class="stat-row">
+    <div class="stat">
+      <span class="num">40+</span>
+      <span class="lbl">Years of Experience</span>
+    </div>
+    <div class="stat">
+      <span class="num">10</span>
+      <span class="lbl">Years on City Council</span>
+    </div>
+    <div class="stat">
+      <span class="num">36</span>
+      <span class="lbl">Years in Banking</span>
+    </div>
+  </div>
+
   <div class="container">
-    <h2 class="headline">Qualifications</h2>
-    <div class="divider"></div>
-    <p>
-      Dwayne Snyder brings over 40 years of financial leadership and public service experience to the Lowell community.
-      His background as Mayor, City Council member, and banking professional gives him the experience needed to manage budgets,
-      support economic growth, and serve with integrity.
+    <div class="section-heading">
+      <span class="label">Background</span>
+      <h2>Proven. Experienced. Ready.</h2>
+      <div class="rule"></div>
+    </div>
+
+    <p class="qual-intro">
+      Dwayne Snyder brings over 40 years of financial leadership and public service to Lowell. His background as Mayor, City Council member, and banking professional gives him the experience needed to manage budgets, support economic growth, and serve with integrity.
     </p>
 
-    <div class="info-card">
-      <h3>Professional Summary</h3>
-      <p>
-        Public servant and banking professional with 40+ years of experience in financial leadership, municipal governance,
-        and economic development. Former Mayor and City Council leader with deep experience in budgeting, policy oversight,
-        and community engagement.
-      </p>
+    <div class="qual-grid">
+      <div class="qual-block">
+        <h3>Core Competencies</h3>
+        <ul>
+          <li>Municipal leadership & governance</li>
+          <li>40+ years financial leadership</li>
+          <li>Economic development initiatives</li>
+          <li>Community engagement</li>
+          <li>Financial analysis & risk management</li>
+          <li>Team leadership & operations</li>
+        </ul>
+      </div>
 
-      <h3>Core Competencies</h3>
-      <ul class="list-style">
-        <li>Municipal leadership and governance experience</li>
-        <li>40+ financial leadership</li>
-        <li>Economic development and business growth initiatives</li>
-        <li>Community engagement and public relations</li>
-        <li>Financial analysis and risk management</li>
-        <li>Team leadership and operational management</li>
-      </ul>
+      <div class="qual-block red">
+        <h3>Professional Experience</h3>
+        <ul>
+          <li>Mayor — City of Lowell, AR</li>
+          <li>Economic Development Director</li>
+          <li>Banker — 36 years (Retired)</li>
+        </ul>
+      </div>
 
-      <h3>Professional Experience</h3>
-  
-      <p><strong>Mayor </strong> </p>
-      <p><strong>Economic Development Director </strong> </p>
-   <p><strong>Retired Banker 36 years </strong> </p>
-     
+      <div class="qual-block gold">
+        <h3>Education</h3>
+        <ul>
+          <li>Graduate School of Banking — LSU (1994)</li>
+          <li>Arkansas Bankers Management School (1979)</li>
+          <li>Arkansas Bankers Lending School (1978)</li>
+        </ul>
+      </div>
 
-      <h3>Education</h3>
-      <p>Graduate School of Banking — LSU (1994)</p>
-      <p>Arkansas Bankers Management School (1979)</p>
-      <p>Arkansas Bankers Lending School (1978)</p>
-
-      <h3>Community Leadership</h3>
-      <p>City Council Member — (10 years)</p>
-      <p>Budget Chairman — City Council</p>
-      <p>Past President — Kiwanis, Lions Clubs, Arts Council</p>
+      <div class="qual-block">
+        <h3>Community Leadership</h3>
+        <ul>
+          <li>City Council Member — 10 years</li>
+          <li>Budget Chairman — City Council</li>
+          <li>Past President — Kiwanis Club</li>
+          <li>Past President — Lions Club</li>
+          <li>Past President — Arts Council</li>
+        </ul>
+      </div>
     </div>
   </div>
+
 </div>
-  <!-- new code -->
+
+<!-- ══════════════ REGISTRATION ══════════════ -->
 <div id="registration" class="tab-content">
   <div class="container">
-    <h2 class="headline">Voter Registration</h2>
-    <div class="divider"></div>
-    <p>
-      Your voice is your vote. In Arkansas, paper is an option—so don't wait. Click below to download your official registration form, print it out, and mail it to your County Clerk today. 
-    </p>
-<div class="download-area">
-  <h3 style="font-family: 'Montserrat'; color: var(--primary-blue); margin-top: 0;">Arkansas Voter Registration</h3>
-  <p>Download, print, and mail your application to the County Clerk.</p>
-  
-  <a href="ArkansasVoterRegistrationApplication.pdf" 
-     download="Dwayne_Snyder_Voter_Reg_Form.pdf" 
-     class="btn-download-pdf">
-    <span class="download-icon">📥</span> Download PDF Form
-  </a>
-  
-  <p style="font-size: 0.8rem; color: #666; margin-top: 15px;">
-    *Requires physical signature and mail-in submission.
-  </p>
-</div>
-   
-      <h3>Voter Registration</h3>
-      <embed 
-  src="ArkansasVoterRegistrationApplication.pdf" 
-  type="application/pdf" 
-  width="100%" 
-  height="600px" 
+    <div class="section-heading">
+      <span class="label">Take Action</span>
+      <h2>Register to Vote</h2>
+      <div class="rule"></div>
+    </div>
 
+    <div class="reg-callout">
+      <h3>Your Voice Is Your Vote</h3>
+      <p>In Arkansas, paper registration is always an option. Download the official form below, print it, sign it, and mail it to your County Clerk — it only takes a few minutes.</p>
+      <a href="ArkansasVoterRegistrationApplication.pdf" download="Dwayne_Snyder_Voter_Reg_Form.pdf" class="btn-download">
+        📥 &nbsp; Download Registration Form
+      </a>
+      <p style="font-size:0.78rem; color:#999; margin-top:14px; margin-bottom:0;">* Requires physical signature and mail-in submission.</p>
+    </div>
+
+    <div class="pdf-embed-wrap">
+      <embed
+        src="ArkansasVoterRegistrationApplication.pdf"
+        type="application/pdf"
+        width="100%"
+        height="620px"
+      />
     </div>
   </div>
 </div>
 
-<footer>
-  <p>PAID FOR BY FRIENDS OF DWAYNE SNYDER</p>
-</footer>
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>Paid for by Friends of Dwayne Snyder</footer>
 
 <script>
-  function openTab(evt, tabName) {
-    // 1. Setup variables
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tab-content");
-    tablinks = document.getElementsByClassName("tab-button");
+function openTab(evt, tabName) {
+  document.querySelectorAll('.tab-content').forEach(el => {
+    el.style.display = 'none';
+    el.classList.remove('active');
+  });
+  document.querySelectorAll('.tab-button').forEach(el => el.classList.remove('active'));
 
-    // 2. Hide all tab content and remove "active" classes
-    for (i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
-      tabcontent[i].classList.remove("active");
-    }
-    for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].classList.remove("active");
-    }
+  const tab = document.getElementById(tabName);
+  tab.style.display = 'block';
+  tab.classList.add('active');
+  evt.currentTarget.classList.add('active');
 
-    // 3. Show the specific tab the user clicked
-    document.getElementById(tabName).style.display = "block";
-    document.getElementById(tabName).classList.add("active");
-    evt.currentTarget.classList.add("active");
-
-    // 4. Update the URL bar so it looks like a real page (e.g., #portfolio)
-    window.history.pushState(null, null, '#' + tabName);
-
-    // 5. Send the data to Google Analytics
-    if (typeof gtag === 'function') {
-      gtag('event', 'page_view', {
-        page_title: evt.currentTarget.innerText,
-        page_location: window.location.href,
-        page_path: '/' + tabName
-      });
-    }
-
-    // 6. Scroll back to the top of the "new" page
-    window.scrollTo(0, 0);
-  }
+  window.history.pushState(null, null, '#' + tabName);
+  window.scrollTo(0, 0);
+}
 </script>
+
 </body>
 </html>
