@@ -1,1 +1,462 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S2CWC8G241"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-S2CWC8G241');
+</script>
+  
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dwayne Snyder | For City Council</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --primary-blue: #0d1b2a;
+  --accent-red: #be1e2d;
+  --gold-accent: #c5a059;
+  --white: #ffffff;
+  --light-gray: #f8f9fa;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #1b263b;
+  background-color: var(--white);
+  text-align: center;
+}
+
+/* Header Section - Image is now INSIDE here */
+header {
+  background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 100%);
+  color: var(--white);
+  padding: 60px 20px 40px 20px;
+  border-bottom: 8px solid var(--accent-red);
+}
+
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(2.5rem, 10vw, 4.5rem);
+  font-weight: 900;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+.subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 10px 0 30px 0; /* Extra space before photo */
+  letter-spacing: 6px;
+  color: var(--gold-accent);
+  text-transform: uppercase;
+}
+
+/* The Photo - No longer using negative margins */
+.candidate-img {
+  width: 260px;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 8px solid var(--white);
+  box-shadow: 0px 10px 25px rgba(0,0,0,0.3);
+  display: block;
+  margin: 0 auto;
+}
+
+/* Ribbon - Now sits safely BELOW the photo */
+.tabs {
+  display: flex;
+  width: 100%;
+  background: var(--primary-blue);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  /* Thin gold line across the top for class */
+  border-top: 1px solid var(--gold-accent); 
+  /* Bold red line across the bottom */
+  border-bottom: 4px solid var(--accent-red);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.tab-button {
+  flex: 1;
+  padding: 20px 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 0.85rem; /* Slightly smaller for better fit */
+  color: rgba(255, 255, 255, 0.7); /* Dim the inactive text slightly */
+  border: none;
+  /* Add a vertical divider between buttons */
+  border-right: 1px solid rgba(255, 255, 255, 0.1); 
+  cursor: pointer;
+  background: transparent;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+/* Remove the last divider so it looks clean */
+.tab-button:last-child {
+  border-right: none;
+}
+
+/* THE ACTIVE TAB - Make it scream "Look here!" */
+.tab-button.active {
+  color: var(--white);
+  background: var(--accent-red);
+  /* Add a gold "glow" or bottom bar to the active tab */
+  box-shadow: inset 0 -4px 0px var(--gold-accent);
+}
+
+/* THE HOVER - Make it feel interactive */
+.tab-button:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+}
+
+/* Mobile Tweak: Stack them if the text gets too long */
+@media (max-width: 480px) {
+  .tab-button {
+    font-size: 0.7rem;
+    padding: 15px 5px;
+  }
+}
+
+/* Content */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.headline {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--primary-blue);
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.divider {
+  width: 100px;
+  height: 6px;
+  background-color: var(--accent-red);
+  margin: 20px auto;
+}
+
+.info-card {
+  background: var(--light-gray);
+  padding: 40px;
+  border-radius: 4px;
+  margin: 40px 0;
+  text-align: left;
+  border-left: 8px solid var(--primary-blue);
+}
+
+.info-card h3 {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--primary-blue);
+  font-size: 1.6rem;
+  margin-top: 25px;
+  text-transform: uppercase;
+  border-bottom: 2px solid #ddd;
+}
+
+.list-style {
+  list-style: none;
+  padding: 0;
+}
+
+.list-style li {
+  font-size: 1.1rem;
+  padding: 8px 0;
+  display: flex;
+  align-items: flex-start;
+}
+
+.list-style li::before {
+  content: "★";
+  color: var(--accent-red);
+  margin-right: 12px;
+}
+
+.btn-primary {
+  display: inline-block;
+  background-color: var(--accent-red);
+  color: white;
+  padding: 20px 50px;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+footer {
+  background: var(--primary-blue);
+  color: white;
+  padding: 50px 20px;
+}
+
+  .download-area {
+  background: var(--light-gray);
+  padding: 30px;
+  border-radius: 8px;
+  border: 2px dashed var(--primary-blue);
+  margin: 30px 0;
+}
+
+.btn-download-pdf {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--accent-red);
+  color: white;
+  padding: 15px 30px;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  transition: transform 0.2s, background-color 0.2s;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn-download-pdf:hover {
+  background-color: #a01826;
+  transform: translateY(-2px);
+}
+  /* Ensure the list items have enough vertical space */
+.list-style li {
+    margin-bottom: 1.25rem; /* Adds space between each priority */
+    line-height: 1.5;      /* Improves readability */
+    display: block;        /* Ensures the description can wrap naturally */
+}
+
+/* If you want the labels and descriptions to sit better together */
+.list-style li strong {
+    display: inline-block;
+    margin-right: 5px;     /* Small gap after the colon */
+    color: #1a365d;        /* Match your header blue if desired */
+}
+
+/* Optional: Add a little more space above the category headers */
+.info-card p strong {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    border-bottom: 1px solid #eee; /* Light separator */
+    padding-bottom: 5px;
+}
+
+
+.download-icon {
+  margin-right: 12px;
+  font-size: 1.2rem;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Dwayne Snyder</h1>
+  <div class="subtitle">Experience You Can Trust</div>
+  <div class="subtitle">Lowell City Council Ward 4 - Position 2</div>
+  <img src="IMG_7435.jpeg" alt="Dwayne Snyder" class="candidate-img">
+</header>
+
+<div class="tabs">
+  <button class="tab-button active" onclick="openTab(event,'home')">Home</button>
+  <button class="tab-button" onclick="openTab(event,'qualifications')">Qualifications</button>
+  <button class="tab-button" onclick="openTab(event,'registration')">Voter Registration</button>
+</div>
+
+<div id="home" class="tab-content active">
+  <div class="container">
+    <h2 class="headline">Putting Our Community First</h2>
+    <div class="divider"></div>
+    <p style="font-size: 1.3rem; font-weight: 600;">Honest leadership, transparent government, and a safer future for every neighborhood in our city.</p>
+
+   <div class="info-card">
+  <h3 style="border-bottom: none; margin-top: 0;">My Priorities</h3>
+
+<p style="font-size: 1.2rem; margin-top: 20px;">
+  <strong>Fiscal Responsibility & Smarter Governance</strong>
+</p>
+
+     
+  
+  <ul class="list-style">
+    <li><strong>Budget-First Leadership:</strong> Prioritizing essential services to ensure every tax dollar is used efficiently.</li>
+    <li><strong>Modernized Bidding Practices:</strong> Implementing transparent, competitive bidding to ensure the city receives the highest quality work at the fair market price.</li>
+    <li><strong>Professional Oversight:</strong> Hiring a dedicated City Engineer to oversee infrastructure projects, ensuring they stay on schedule and under budget.</li>
+  </ul>
+<p style="font-size: 1.2rem; margin-top: 20px;">
+  <strong>Public Safety & Community Stability</strong>
+</p>
+
+  <ul class="list-style">
+    <li><strong>Proactive Safety:</strong> Supporting first responders with the resources and specialized training needed to keep our neighborhoods responsive.</li>
+    <li><strong>Risk Management:</strong> Eliminating avoidable lawsuits by improving city protocols and protecting the city treasury.</li>
+    <li><strong>Equipment Reliability:</strong> Implementing a systematic plan to update municipal equipment for better safety and lower long-term repair costs.</li>
+  </ul>
+<p style="font-size: 1.2rem; margin-top: 20px;">
+  <strong>Economic Growth: Making Lowell a Destination</strong>
+</p>
+
+
+  <ul class="list-style">
+    <li><strong>From "Pass-Through" to "Place-to-Be":</strong> Advocating for downtown revitalization and beautification to turn our corridors into vibrant hubs.</li>
+    <li><strong>Strategic Development:</strong> Creating "destination" draws through parks, events, and walkability to capture the economic energy of our region.</li>
+  </ul>
+</div>
+
+    <a href="mailto:Me71643@yahoo.com?subject=Volunteer" class="btn-primary">Join the Campaign</a>
+    
+    <div style="margin-top: 30px;">
+      <img src="QR.png" alt="Scan to Learn More" style="width: 150px; border: 1px solid #ddd; padding: 5px;">
+    </div>
+  </div>
+</div>
+
+<div id="qualifications" class="tab-content">
+  <div class="container">
+    <h2 class="headline">Qualifications</h2>
+    <div class="divider"></div>
+    <p>
+      Dwayne Snyder brings over 40 years of financial leadership and public service experience to the Lowell community.
+      His background as Mayor, City Council member, and banking professional gives him the experience needed to manage budgets,
+      support economic growth, and serve with integrity.
+    </p>
+
+    <div class="info-card">
+      <h3>Professional Summary</h3>
+      <p>
+        Public servant and banking professional with 40+ years of experience in financial leadership, municipal governance,
+        and economic development. Former Mayor and City Council leader with deep experience in budgeting, policy oversight,
+        and community engagement.
+      </p>
+
+      <h3>Core Competencies</h3>
+      <ul class="list-style">
+        <li>Municipal leadership and governance experience</li>
+        <li>40+ financial leadership</li>
+        <li>Economic development and business growth initiatives</li>
+        <li>Community engagement and public relations</li>
+        <li>Financial analysis and risk management</li>
+        <li>Team leadership and operational management</li>
+      </ul>
+
+      <h3>Professional Experience</h3>
+  
+      <p><strong>Mayor </strong> </p>
+      <p><strong>Economic Development Director </strong> </p>
+   <p><strong>Retired Banker 36 years </strong> </p>
+     
+
+      <h3>Education</h3>
+      <p>Graduate School of Banking — LSU (1994)</p>
+      <p>Arkansas Bankers Management School (1979)</p>
+      <p>Arkansas Bankers Lending School (1978)</p>
+
+      <h3>Community Leadership</h3>
+      <p>City Council Member — (10 years)</p>
+      <p>Budget Chairman — City Council</p>
+      <p>Past President — Kiwanis, Lions Clubs, Arts Council</p>
+    </div>
+  </div>
+</div>
+  <!-- new code -->
+<div id="registration" class="tab-content">
+  <div class="container">
+    <h2 class="headline">Voter Registration</h2>
+    <div class="divider"></div>
+    <p>
+      Your voice is your vote. In Arkansas, paper is an option—so don't wait. Click below to download your official registration form, print it out, and mail it to your County Clerk today. 
+    </p>
+<div class="download-area">
+  <h3 style="font-family: 'Montserrat'; color: var(--primary-blue); margin-top: 0;">Arkansas Voter Registration</h3>
+  <p>Download, print, and mail your application to the County Clerk.</p>
+  
+  <a href="ArkansasVoterRegistrationApplication.pdf" 
+     download="Dwayne_Snyder_Voter_Reg_Form.pdf" 
+     class="btn-download-pdf">
+    <span class="download-icon">📥</span> Download PDF Form
+  </a>
+  
+  <p style="font-size: 0.8rem; color: #666; margin-top: 15px;">
+    *Requires physical signature and mail-in submission.
+  </p>
+</div>
+   
+      <h3>Voter Registration</h3>
+      <embed 
+  src="ArkansasVoterRegistrationApplication.pdf" 
+  type="application/pdf" 
+  width="100%" 
+  height="600px" 
+
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>PAID FOR BY FRIENDS OF DWAYNE SNYDER</p>
+</footer>
+
+<script>
+  function openTab(evt, tabName) {
+    // 1. Setup variables
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tab-content");
+    tablinks = document.getElementsByClassName("tab-button");
+
+    // 2. Hide all tab content and remove "active" classes
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+      tabcontent[i].classList.remove("active");
+    }
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].classList.remove("active");
+    }
+
+    // 3. Show the specific tab the user clicked
+    document.getElementById(tabName).style.display = "block";
+    document.getElementById(tabName).classList.add("active");
+    evt.currentTarget.classList.add("active");
+
+    // 4. Update the URL bar so it looks like a real page (e.g., #portfolio)
+    window.history.pushState(null, null, '#' + tabName);
+
+    // 5. Send the data to Google Analytics
+    if (typeof gtag === 'function') {
+      gtag('event', 'page_view', {
+        page_title: evt.currentTarget.innerText,
+        page_location: window.location.href,
+        page_path: '/' + tabName
+      });
+    }
+
+    // 6. Scroll back to the top of the "new" page
+    window.scrollTo(0, 0);
+  }
+</script>
+</body>
+</html>
