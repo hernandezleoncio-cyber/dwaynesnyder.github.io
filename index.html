@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dwayne Snyder | For City Council</title>
 
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S2CWC8G241"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S2CWC8G241');
+</script>
+
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -564,6 +573,72 @@ footer {
   .tab-button { font-size: 0.8rem; padding: 14px 6px; letter-spacing: 1px; }
   .priority-cards { grid-template-columns: 1fr; }
 }
+
+/* ── TICKER RIBBON ── */
+.ticker-wrap {
+  background: var(--navy);
+  border-top: 2px solid var(--gold);
+  border-bottom: 2px solid var(--gold);
+  overflow: hidden;
+  padding: 10px 0;
+  position: relative;
+}
+
+/* Fade edges */
+.ticker-wrap::before,
+.ticker-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 80px;
+  z-index: 2;
+  pointer-events: none;
+}
+.ticker-wrap::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--navy), transparent);
+}
+.ticker-wrap::after {
+  right: 0;
+  background: linear-gradient(270deg, var(--navy), transparent);
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker-scroll 38s linear infinite;
+}
+
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 2.5px;
+  color: rgba(255,255,255,0.85);
+  padding: 0 10px;
+}
+
+.ticker-item .dot {
+  color: var(--gold);
+  font-size: 1.4rem;
+  margin: 0 18px;
+  line-height: 1;
+}
+
+.ticker-item strong {
+  color: var(--gold);
+}
+
+@keyframes ticker-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
 </style>
 </head>
 <body>
@@ -578,6 +653,30 @@ footer {
   </div>
 </header>
 <div class="header-bar"></div>
+
+<!-- ══════════════ TICKER RIBBON ══════════════ -->
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-track">
+    <!-- First copy -->
+    <span class="ticker-item"><strong>Your Vote Matters</strong> — Make Your Voice Heard in Lowell<span class="dot">★</span></span>
+    <span class="ticker-item">40+ Years of Financial Leadership &amp; Public Service<span class="dot">★</span></span>
+    <span class="ticker-item"><strong>Election Day Is Coming</strong> — Are You Registered?<span class="dot">★</span></span>
+    <span class="ticker-item">Fiscal Responsibility · Public Safety · Economic Growth<span class="dot">★</span></span>
+    <span class="ticker-item"><strong>Dwayne Snyder</strong> — Experience You Can Trust<span class="dot">★</span></span>
+    <span class="ticker-item">Former Mayor · Budget Chairman · 36-Year Banking Professional<span class="dot">★</span></span>
+    <span class="ticker-item"><strong>Ward 4 · Position 2</strong> — Lowell City Council<span class="dot">★</span></span>
+    <span class="ticker-item">Every Vote Counts — Especially in Local Elections<span class="dot">★</span></span>
+    <!-- Duplicate for seamless loop -->
+    <span class="ticker-item"><strong>Your Vote Matters</strong> — Make Your Voice Heard in Lowell<span class="dot">★</span></span>
+    <span class="ticker-item">40+ Years of Financial Leadership &amp; Public Service<span class="dot">★</span></span>
+    <span class="ticker-item"><strong>Election Day Is Coming</strong> — Are You Registered?<span class="dot">★</span></span>
+    <span class="ticker-item">Fiscal Responsibility · Public Safety · Economic Growth<span class="dot">★</span></span>
+    <span class="ticker-item"><strong>Dwayne Snyder</strong> — Experience You Can Trust<span class="dot">★</span></span>
+    <span class="ticker-item">Former Mayor · Budget Chairman · 36-Year Banking Professional<span class="dot">★</span></span>
+    <span class="ticker-item"><strong>Ward 4 · Position 2</strong> — Lowell City Council<span class="dot">★</span></span>
+    <span class="ticker-item">Every Vote Counts — Especially in Local Elections<span class="dot">★</span></span>
+  </div>
+</div>
 
 <!-- ══════════════ NAV ══════════════ -->
 <nav>
@@ -722,7 +821,7 @@ footer {
       <div class="qual-block red">
         <h3>Professional Experience</h3>
         <ul>
-          <li>Former Mayor/li>
+          <li>Mayor — City of Lowell, AR</li>
           <li>Economic Development Director</li>
           <li>Banker — 36 years (Retired)</li>
         </ul>
@@ -798,6 +897,16 @@ function openTab(evt, tabName) {
   evt.currentTarget.classList.add('active');
 
   window.history.pushState(null, null, '#' + tabName);
+
+  // Track tab views in Google Analytics
+  if (typeof gtag === 'function') {
+    gtag('event', 'page_view', {
+      page_title: evt.currentTarget.innerText,
+      page_location: window.location.href,
+      page_path: '/' + tabName
+    });
+  }
+
   window.scrollTo(0, 0);
 }
 </script>
