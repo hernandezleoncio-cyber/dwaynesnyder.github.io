@@ -574,7 +574,182 @@ footer {
   .priority-cards { grid-template-columns: 1fr; }
 }
 
-/* ── EXPLORE LOWELL ── */
+/* ── ENDORSEMENTS ── */
+.endorse-form-wrap {
+  background: var(--navy);
+  border-radius: 6px;
+  padding: 36px 32px;
+  margin-bottom: 48px;
+  position: relative;
+  overflow: hidden;
+}
+.endorse-form-wrap::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(-55deg, transparent, transparent 40px, rgba(255,255,255,0.02) 40px, rgba(255,255,255,0.02) 41px);
+  pointer-events: none;
+}
+.endorse-form-wrap h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 3px;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.endorse-form-wrap p {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+}
+.endorse-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 14px;
+  position: relative;
+}
+@media (max-width: 540px) { .endorse-fields { grid-template-columns: 1fr; } }
+.endorse-input {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #fff;
+  padding: 13px 16px;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.95rem;
+  border-radius: 3px;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+.endorse-input::placeholder { color: rgba(255,255,255,0.35); }
+.endorse-input:focus { border-color: var(--gold); }
+.endorse-textarea {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #fff;
+  padding: 13px 16px;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.95rem;
+  border-radius: 3px;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+  min-height: 90px;
+  resize: vertical;
+  margin-bottom: 14px;
+  position: relative;
+}
+.endorse-textarea::placeholder { color: rgba(255,255,255,0.35); }
+.endorse-textarea:focus { border-color: var(--gold); }
+.endorse-submit {
+  background: var(--gold);
+  color: var(--navy);
+  border: none;
+  padding: 14px 36px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  border-radius: 3px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: opacity 0.2s, transform 0.15s;
+}
+.endorse-submit:hover { opacity: 0.88; transform: translateY(-1px); }
+.endorse-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+.endorse-status {
+  margin-top: 14px;
+  font-size: 0.9rem;
+  min-height: 22px;
+  color: rgba(255,255,255,0.6);
+  font-style: italic;
+  position: relative;
+}
+.endorse-status.ok  { color: #86efac; }
+.endorse-status.err { color: #fca5a5; }
+
+/* Cards wall */
+.endorse-wall {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+.endorse-card {
+  background: #fff;
+  border-radius: 4px;
+  padding: 26px 24px 20px;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.07);
+  border-top: 5px solid var(--navy);
+  position: relative;
+  animation: fadeUp 0.5s ease both;
+}
+.endorse-card.gold { border-top-color: var(--gold); }
+.endorse-card.red  { border-top-color: var(--red); }
+.endorse-quote-mark {
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  color: rgba(10,22,40,0.08);
+  line-height: 1;
+  position: absolute;
+  top: 10px; left: 16px;
+}
+.endorse-card p {
+  font-size: 0.96rem;
+  color: #333;
+  line-height: 1.7;
+  margin-bottom: 14px;
+  padding-top: 10px;
+}
+.endorse-card-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 12px;
+}
+.endorse-avatar {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #fff;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.endorse-name {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--navy);
+}
+.endorse-location {
+  font-size: 0.78rem;
+  color: #999;
+}
+.endorse-empty {
+  text-align: center;
+  padding: 50px 20px;
+  color: #aaa;
+  font-style: italic;
+  grid-column: 1/-1;
+}
+
+/* Moderation badge */
+.mod-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(200,151,58,0.15);
+  border: 1px solid rgba(200,151,58,0.3);
+  color: var(--gold);
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-family: 'Bebas Neue', sans-serif;
+  margin-left: auto;
+}
+
 .facts-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -960,8 +1135,9 @@ footer {
 <nav>
   <button class="tab-button active" onclick="openTab(event,'home')">Home</button>
   <button class="tab-button" onclick="openTab(event,'qualifications')">Qualifications</button>
-  <button class="tab-button" onclick="openTab(event,'registration')">Register to Vote</button>
-  <button class="tab-button" onclick="openTab(event,'explore')">Explore Lowell</button>
+  <button class="tab-button" onclick="openTab(event,'endorsements')">Endorsements</button>
+  <button class="tab-button" onclick="openTab(event,'registration')">Register</button>
+  <button class="tab-button" onclick="openTab(event,'explore')">Explore</button>
 </nav>
 
 <!-- ══════════════ HOME ══════════════ -->
@@ -1081,7 +1257,7 @@ footer {
     </div>
 
     <p class="qual-intro">
-      Dwayne Snyder brings over 40 years of financial leadership and public service to Lowell. His background as Mayor, City Council member, and banking professional gives him the experience needed to manage budgets, support economic growth, and serve with integrity.
+      Dwayne Snyder brings over 40 years of financial leadership and public service to the community. His background as a former Mayor, City Council member, and banking professional gives him the experience needed to manage budgets, support economic growth, and serve with integrity.
     </p>
 
     <div class="qual-grid">
@@ -1100,7 +1276,7 @@ footer {
       <div class="qual-block red">
         <h3>Professional Experience</h3>
         <ul>
-          <li>Mayor</li>
+          <li>Former Mayor</li>
           <li>Economic Development Director</li>
           <li>Banker — 36 years (Retired)</li>
         </ul>
@@ -1159,6 +1335,48 @@ footer {
   </div>
 </div>
 
+<!-- ══════════════ ENDORSEMENTS ══════════════ -->
+<div id="endorsements" class="tab-content">
+
+  <div class="hero-strip">
+    Real Voices · <em>Real Neighbors</em> · Real Support
+  </div>
+
+  <div class="container">
+    <div class="section-heading">
+      <span class="label">Community Support</span>
+      <h2>Lowell Speaks Up</h2>
+      <div class="rule"></div>
+    </div>
+
+    <!-- Submit form -->
+    <div class="endorse-form-wrap">
+      <h3>✍️ Leave Your Endorsement</h3>
+      <p>Share why you support Dwayne — your message will appear below after a quick review.</p>
+      <div class="endorse-fields">
+        <input id="e-name" class="endorse-input" type="text" placeholder="Your Name *" maxlength="60">
+        <input id="e-location" class="endorse-input" type="text" placeholder="Neighborhood / Street (optional)" maxlength="60">
+      </div>
+      <textarea id="e-message" class="endorse-textarea" placeholder="Why do you support Dwayne Snyder? (max 300 characters)" maxlength="300"></textarea>
+      <div style="display:flex; align-items:center; flex-wrap:wrap; gap:14px; position:relative;">
+        <button class="endorse-submit" id="e-submit" onclick="submitEndorsement()">Post My Endorsement</button>
+        <span class="mod-badge">🤖 AI-Moderated · Positive Only</span>
+      </div>
+      <div class="endorse-status" id="e-status"></div>
+    </div>
+
+    <!-- Live wall -->
+    <div class="section-heading">
+      <span class="label">From the Community</span>
+      <h2>What Neighbors Are Saying</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="endorse-wall" id="endorse-wall">
+      <div class="endorse-empty">Be the first to leave an endorsement! 👆</div>
+    </div>
+  </div>
+</div>
+
 <!-- ══════════════ EXPLORE LOWELL ══════════════ -->
 <div id="explore" class="tab-content">
 
@@ -1186,7 +1404,7 @@ footer {
         <div class="trivia-score-bar">
           <span class="trivia-score">⭐ Score: <span id="t-score">0</span></span>
           <div class="trivia-progress"><div class="trivia-progress-fill" id="t-progress"></div></div>
-          <span class="trivia-q-num">Q <span id="t-qnum">1</span> / 8</span>
+          <span class="trivia-q-num">Q <span id="t-qnum">1</span> / 9</span>
         </div>
         <div class="trivia-question" id="t-question">Loading…</div>
         <div class="trivia-options" id="t-options"></div>
@@ -1256,12 +1474,21 @@ footer {
         <div class="rule"></div>
       </div>
       <p style="text-align:center; color:#666; margin-bottom:24px; font-size:0.95rem;">
-        Ward 4 covers the <strong>northeastern area of Lowell</strong>. Use the map below to explore the city and confirm your ward. If you're unsure, contact the Benton County Clerk's office.
+        Ward 4 covers the <strong>northeastern area of Lowell</strong>. Use the map below to explore the city. For the official ward boundary map, click the link below — and if you're unsure which ward you're in, contact the Benton County Clerk's office.
       </p>
+
+      <div style="text-align:center; margin-bottom:16px;">
+        <a href="https://www.lowellarkansas.gov/communityplanning-development/page/master-plans-maps"
+           target="_blank"
+           style="display:inline-flex; align-items:center; gap:8px; background:var(--navy); color:#fff; padding:11px 24px; font-family:'Bebas Neue',sans-serif; font-size:1rem; letter-spacing:2px; text-decoration:none; border-radius:3px;">
+          🗺️ View Official Alderman Wards Map (City of Lowell)
+        </a>
+      </div>
+
       <div class="map-frame">
         <iframe
-          title="Lowell Arkansas Ward 4 Map"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12764.3!2d-94.1285!3d36.2584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87c90e7b1f6b0001%3A0x1234!2sLowell%2C%20AR!5e0!3m2!1sen!2sus!4v1710000000000!5m2!1sen!2sus"
+          title="Lowell Arkansas City Map"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13011.47!2d-94.18900!3d36.25800!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87c914d3f6c58945%3A0x7c3c29b5c03e7d97!2sLowell%2C%20AR%2072745!5e0!3m2!1sen!2sus!4v1713000000000!5m2!1sen!2sus"
           width="100%"
           height="480"
           style="border:0; display:block;"
@@ -1358,6 +1585,12 @@ const TRIVIA = [
     options: ["4 years", "6 years", "10 years", "15 years"],
     answer: 2,
     fact: "Dwayne served 10 years on City Council — including as Budget Chairman — giving him real, tested experience in local governance."
+  },
+  {
+    q: "J.B. Hunt Transport Services, one of the largest trucking companies in North America, is headquartered in which NW Arkansas city?",
+    options: ["Fayetteville", "Lowell", "Rogers", "Bentonville"],
+    answer: 1,
+    fact: "J.B. Hunt is headquartered right in Lowell, AR — making Lowell home to one of the most recognized logistics brands in the country."
   }
 ];
 
@@ -1435,10 +1668,10 @@ function triviaFinish() {
   result.classList.add('show');
   document.getElementById('t-final-score').textContent = tScore + ' / ' + TRIVIA.length;
   const msgs = [
-    [0, 2, "Keep exploring — Lowell has a lot to offer! 🌱"],
-    [3, 5, "Not bad! You know your city pretty well. 👍"],
-    [6, 7, "Impressive! You're a true Lowell resident. ⭐"],
-    [8, 8, "Perfect score! Dwayne would be proud. 🏆"]
+    [0, 3, "Keep exploring — Lowell has a lot to offer! 🌱"],
+    [4, 6, "Not bad! You know your city pretty well. 👍"],
+    [7, 8, "Impressive! You're a true Lowell resident. ⭐"],
+    [9, 9, "Perfect score! Dwayne would be proud. 🏆"]
   ];
   const msg = msgs.find(([lo, hi]) => tScore >= lo && tScore <= hi);
   document.getElementById('t-result-msg').textContent = msg ? msg[2] : '';
@@ -1448,6 +1681,116 @@ function triviaRestart() { triviaInit(); }
 
 // Auto-init trivia when tab is first opened
 document.addEventListener('DOMContentLoaded', triviaInit);
+
+// ── ENDORSEMENTS ENGINE ──
+const ENDORSE_COLORS = ['', 'gold', 'red', '', 'gold', 'red'];
+let endorsements = [];
+
+async function submitEndorsement() {
+  const name    = document.getElementById('e-name').value.trim();
+  const loc     = document.getElementById('e-location').value.trim();
+  const message = document.getElementById('e-message').value.trim();
+  const status  = document.getElementById('e-status');
+  const btn     = document.getElementById('e-submit');
+
+  if (!name) { setStatus('Please enter your name.', 'err'); return; }
+  if (message.length < 10) { setStatus('Please write at least a sentence or two!', 'err'); return; }
+
+  btn.disabled = true;
+  setStatus('🤖 Reviewing your message…', '');
+
+  try {
+    const resp = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 100,
+        system: `You are a content moderator for a local political campaign website. 
+Your job is to decide if a visitor endorsement message is appropriate to display publicly.
+
+APPROVE if the message:
+- Is supportive or positive about the candidate Dwayne Snyder
+- Expresses hope, civic encouragement, or community support
+- Is neutral and civic-minded (e.g. "I hope he wins")
+
+REJECT if the message:
+- Is negative, critical, or attacks the candidate or other candidates
+- Contains profanity, slurs, hate speech, or offensive content
+- Is spam, nonsensical, or clearly fake
+- Contains personal information like phone numbers or email addresses
+- Is overly political in a divisive or inflammatory way
+
+Respond with ONLY a JSON object in this exact format, nothing else:
+{"approved": true, "reason": "brief reason"}
+or
+{"approved": false, "reason": "brief reason"}`,
+        messages: [{ role: 'user', content: `Name: ${name}\nMessage: ${message}` }]
+      })
+    });
+
+    const data = await resp.json();
+    const raw = data.content?.map(c => c.text || '').join('') || '';
+    let result;
+    try {
+      result = JSON.parse(raw.replace(/```json|```/g, '').trim());
+    } catch(e) {
+      result = { approved: false, reason: 'Could not parse moderation result' };
+    }
+
+    if (result.approved) {
+      const card = { name, loc, message, color: ENDORSE_COLORS[endorsements.length % ENDORSE_COLORS.length] };
+      endorsements.unshift(card);
+      renderEndorsements();
+      document.getElementById('e-name').value = '';
+      document.getElementById('e-location').value = '';
+      document.getElementById('e-message').value = '';
+      setStatus('✅ Thank you! Your endorsement has been posted.', 'ok');
+      if (typeof gtag === 'function') gtag('event', 'endorsement_submitted', { name });
+    } else {
+      setStatus('⚠️ Your message couldn\'t be posted. Please keep it positive and supportive!', 'err');
+    }
+  } catch(err) {
+    setStatus('Could not connect to review service. Please try again.', 'err');
+  }
+
+  btn.disabled = false;
+}
+
+function setStatus(msg, type) {
+  const el = document.getElementById('e-status');
+  el.textContent = msg;
+  el.className = 'endorse-status' + (type ? ' ' + type : '');
+}
+
+function renderEndorsements() {
+  const wall = document.getElementById('endorse-wall');
+  if (!endorsements.length) {
+    wall.innerHTML = '<div class="endorse-empty">Be the first to leave an endorsement! 👆</div>';
+    return;
+  }
+  wall.innerHTML = endorsements.map((e, i) => {
+    const initials = e.name.split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
+    const colors = ['#0a1628','#c0202f','#c8973a','#1b263b'];
+    const bg = colors[i % colors.length];
+    return `
+    <div class="endorse-card ${e.color}" style="animation-delay:${i * 0.08}s">
+      <span class="endorse-quote-mark">"</span>
+      <p>${escHtml(e.message)}</p>
+      <div class="endorse-card-footer">
+        <div class="endorse-avatar" style="background:${bg}">${initials}</div>
+        <div>
+          <div class="endorse-name">${escHtml(e.name)}</div>
+          ${e.loc ? `<div class="endorse-location">📍 ${escHtml(e.loc)}</div>` : ''}
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function escHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
 </script>
 
 </body>
