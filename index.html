@@ -17,6 +17,12 @@
   gtag('config', 'G-S2CWC8G241');
 </script>
 
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-check-compat.js"></script>
+  
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -1365,6 +1371,7 @@ footer {
 
 ```
 <!-- Submit form -->
+<!-- Submit form with VIDEO UPLOAD -->
 <div class="endorse-form-wrap">
   <h3>✍️ Leave Your Endorsement</h3>
   <p>Share why you support Dwayne — your message will appear below after a quick review.</p>
@@ -1373,6 +1380,49 @@ footer {
     <input id="e-location" class="endorse-input" type="text" placeholder="Neighborhood / Street (optional)" maxlength="60">
   </div>
   <textarea id="e-message" class="endorse-textarea" placeholder="Why do you support Dwayne Snyder? (max 300 characters)" maxlength="300"></textarea>
+  
+  <!-- VIDEO UPLOAD SECTION -->
+  <div style="margin-bottom: 14px; position: relative;">
+    <label style="display: block; color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 8px; font-weight: 600;">
+      🎥 Add Video Testimonial (Optional)
+    </label>
+    <input type="file" id="e-video" accept="video/*" style="
+      background: rgba(255,255,255,0.07);
+      border: 2px dashed rgba(255,255,255,0.3);
+      color: #fff;
+      padding: 12px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.9rem;
+      border-radius: 3px;
+      width: 100%;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    " onchange="handleVideoSelect(this)">
+    <div id="video-preview" style="margin-top: 12px; display: none;">
+      <video id="video-preview-player" controls style="
+        width: 100%;
+        max-width: 400px;
+        max-height: 250px;
+        border-radius: 4px;
+        border: 2px solid var(--gold);
+      "></video>
+      <button type="button" onclick="clearVideo()" style="
+        background: rgba(192, 32, 47, 0.3);
+        border: 1px solid var(--red);
+        color: #fff;
+        padding: 6px 16px;
+        font-size: 0.85rem;
+        border-radius: 3px;
+        cursor: pointer;
+        margin-top: 8px;
+        font-family: 'Source Sans 3', sans-serif;
+      ">Remove Video</button>
+    </div>
+    <p style="color: rgba(255,255,255,0.4); font-size: 0.78rem; margin-top: 6px; font-style: italic;">
+      Max 50MB • MP4, WebM, MOV supported • Videos shared with all visitors
+    </p>
+  </div>
+  
   <div style="display:flex; align-items:center; flex-wrap:wrap; gap:14px; position:relative;">
     <button class="endorse-submit" id="e-submit" onclick="submitEndorsement()">Post My Endorsement</button>
     <span class="mod-badge">🤖 AI-Moderated · Positive Only</span>
@@ -1387,7 +1437,7 @@ footer {
   <div class="rule"></div>
 </div>
 <div class="endorse-wall" id="endorse-wall">
-  <div class="endorse-empty">Be the first to leave an endorsement! 👆</div>
+  <div class="endorse-empty">Loading endorsements... 🔄</div>
 </div>
 ```
 
@@ -1532,6 +1582,38 @@ footer {
 <footer>Paid for by Friends of Dwayne Snyder</footer>
 
 <script>
+
+  // ══════════════════════════════════════════════════════════════════════
+// COMPLETE FIREBASE + ENDORSEMENTS JAVASCRIPT
+// Copy this entire section into your <script> tag (REPLACE endorsement code)
+// ══════════════════════════════════════════════════════════════════════
+ 
+// ── FIREBASE CONFIGURATION ──
+const firebaseConfig = {
+  apiKey: "AIzaSyBZiO7I7klHUe38VJOeMajpRj3NerhMxvg",
+  authDomain: "citycouncil-b596b.firebaseapp.com",
+  projectId: "citycouncil-b596b",
+  storageBucket: "citycouncil-b596b.firebasestorage.app",
+  messagingSenderId: "968399142325",
+  appId: "1:968399142325:web:79e9429b990d809048edfc",
+  measurementId: "G-1W9SZDCNP4"
+};
+ 
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+const storage = firebase.storage();
+ 
+// Initialize App Check with reCAPTCHA
+const appCheck = firebase.appCheck();
+appCheck.activate(
+  '6LeOTrksAAAAABFmDAxGSS75h0pzP-XibtlybPmP',  // Your reCAPTCHA site key
+  true // Enable token auto-refresh
+);
+ 
+console.log("✅ Firebase + App Check initialized!");
+ 
+// ── TAB NAVIGATION (Keep your existing function if you have it) ──
 function openTab(evt, tabName) {
   document.querySelectorAll('.tab-content').forEach(el => {
     el.style.display = 'none';
@@ -1557,6 +1639,210 @@ function openTab(evt, tabName) {
   window.scrollTo(0, 0);
 }
 
+// ── ENDORSEMENTS ENGINE WITH FIREBASE + VIDEO SUPPORT ──
+const ENDORSE_COLORS = ['', 'gold', 'red', '', 'gold', 'red'];
+let currentVideoFile = null;
+let unsubscribe = null;
+ 
+// Load endorsements with real-time updates
+function loadEndorsements() {
+  unsubscribe = db.collection('endorsements')
+    .orderBy('timestamp', 'desc')
+    .onSnapshot((snapshot) => {
+      const endorsements = [];
+      snapshot.forEach((doc) => {
+        endorsements.push({ id: doc.id, ...doc.data() });
+      });
+      renderEndorsements(endorsements);
+    }, (error) => {
+      console.error('Error loading endorsements:', error);
+      document.getElementById('endorse-wall').innerHTML = 
+        '<div class="endorse-empty">Unable to load endorsements. Please refresh the page.</div>';
+    });
+}
+ 
+// Handle video file selection
+function handleVideoSelect(input) {
+  const file = input.files[0];
+  if (!file) return;
+  
+  if (file.size > 50 * 1024 * 1024) {
+    setStatus('Video file is too large. Maximum size is 50MB.', 'err');
+    input.value = '';
+    return;
+  }
+  
+  if (!file.type.startsWith('video/')) {
+    setStatus('Please select a valid video file.', 'err');
+    input.value = '';
+    return;
+  }
+  
+  currentVideoFile = file;
+  
+  const preview = document.getElementById('video-preview');
+  const player = document.getElementById('video-preview-player');
+  const url = URL.createObjectURL(file);
+  player.src = url;
+  preview.style.display = 'block';
+}
+ 
+// Clear video selection
+function clearVideo() {
+  currentVideoFile = null;
+  document.getElementById('e-video').value = '';
+  document.getElementById('video-preview').style.display = 'none';
+  document.getElementById('video-preview-player').src = '';
+}
+ 
+// Submit endorsement
+async function submitEndorsement() {
+  const name = document.getElementById('e-name').value.trim();
+  const loc = document.getElementById('e-location').value.trim();
+  const message = document.getElementById('e-message').value.trim();
+  const btn = document.getElementById('e-submit');
+ 
+  if (!name) { setStatus('Please enter your name.', 'err'); return; }
+  if (message.length < 10) { setStatus('Please write at least a sentence or two!', 'err'); return; }
+ 
+  btn.disabled = true;
+  setStatus('🤖 Reviewing your message…', '');
+ 
+  try {
+    // AI Moderation
+    const resp = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 100,
+        system: `You are a content moderator for a local political campaign website. 
+Your job is to decide if a visitor endorsement message is appropriate to display publicly.
+ 
+APPROVE if the message:
+- Is supportive or positive about the candidate Dwayne Snyder
+- Expresses hope, civic encouragement, or community support
+- Is neutral and civic-minded (e.g. "I hope he wins")
+ 
+REJECT if the message:
+- Is negative, critical, or attacks the candidate or other candidates
+- Contains profanity, slurs, hate speech, or offensive content
+- Is spam, nonsensical, or clearly fake
+- Contains personal information like phone numbers or email addresses
+- Is overly political in a divisive or inflammatory way
+ 
+Respond with ONLY a JSON object in this exact format, nothing else:
+{"approved": true, "reason": "brief reason"}
+or
+{"approved": false, "reason": "brief reason"}`,
+        messages: [{ role: 'user', content: `Name: ${name}\nMessage: ${message}` }]
+      })
+    });
+ 
+    const data = await resp.json();
+    const raw = data.content?.map(c => c.text || '').join('') || '';
+    let result;
+    try {
+      result = JSON.parse(raw.replace(/```json|```/g, '').trim());
+    } catch(e) {
+      result = { approved: false, reason: 'Could not parse moderation result' };
+    }
+ 
+    if (result.approved) {
+      let videoUrl = null;
+      
+      // Upload video if present
+      if (currentVideoFile) {
+        setStatus('📹 Uploading video...', '');
+        const videoRef = storage.ref(`endorsement-videos/${Date.now()}_${currentVideoFile.name}`);
+        const uploadTask = await videoRef.put(currentVideoFile);
+        videoUrl = await uploadTask.ref.getDownloadURL();
+      }
+      
+      // Save to Firestore
+      await db.collection('endorsements').add({
+        name,
+        location: loc,
+        message,
+        videoUrl,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        createdAt: new Date().toISOString()
+      });
+      
+      // Clear form
+      document.getElementById('e-name').value = '';
+      document.getElementById('e-location').value = '';
+      document.getElementById('e-message').value = '';
+      clearVideo();
+      
+      setStatus('✅ Thank you! Your endorsement has been posted.', 'ok');
+      if (typeof gtag === 'function') {
+        gtag('event', 'endorsement_submitted', { name, has_video: !!videoUrl });
+      }
+    } else {
+      setStatus('⚠️ Your message couldn\'t be posted. Please keep it positive and supportive!', 'err');
+    }
+  } catch(err) {
+    console.error('Submission error:', err);
+    setStatus('Could not submit. Please try again or check your internet connection.', 'err');
+  }
+ 
+  btn.disabled = false;
+}
+ 
+function setStatus(msg, type) {
+  const el = document.getElementById('e-status');
+  el.textContent = msg;
+  el.className = 'endorse-status' + (type ? ' ' + type : '');
+}
+ 
+function renderEndorsements(endorsements) {
+  const wall = document.getElementById('endorse-wall');
+  if (!endorsements || endorsements.length === 0) {
+    wall.innerHTML = '<div class="endorse-empty">Be the first to leave an endorsement! 👆</div>';
+    return;
+  }
+  
+  wall.innerHTML = endorsements.map((e, i) => {
+    const initials = e.name.split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
+    const colors = ['#0a1628','#c0202f','#c8973a','#1b263b'];
+    const bg = colors[i % colors.length];
+    const color = ENDORSE_COLORS[i % ENDORSE_COLORS.length];
+    
+    return `
+    <div class="endorse-card ${color}" style="animation-delay:${Math.min(i * 0.08, 1)}s">
+      <span class="endorse-quote-mark">"</span>
+      <p>${escHtml(e.message)}</p>
+      ${e.videoUrl ? `<video class="endorse-video" controls><source src="${e.videoUrl}" type="video/mp4">Your browser does not support video.</video>` : ''}
+      <div class="endorse-card-footer">
+        <div class="endorse-avatar" style="background:${bg}">${initials}</div>
+        <div>
+          <div class="endorse-name">${escHtml(e.name)}</div>
+          ${e.location ? `<div class="endorse-location">📍 ${escHtml(e.location)}</div>` : ''}
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+ 
+function escHtml(str) {
+  if (!str) return '';
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+ 
+// Load endorsements when page loads
+document.addEventListener('DOMContentLoaded', () => {
+  loadEndorsements();
+});
+ 
+// Cleanup listener on page unload
+window.addEventListener('beforeunload', () => {
+  if (unsubscribe) unsubscribe();
+});
+ 
+// ══════════════════════════════════════════════════════════════════════
+// KEEP YOUR EXISTING TRIVIA CODE BELOW THIS LINE
+// ══════════════════════════════════════════════════════════════════════
 // ── TRIVIA ENGINE ──
 const TRIVIA = [
   {
@@ -1703,115 +1989,7 @@ function triviaRestart() { triviaInit(); }
 // Auto-init trivia when tab is first opened
 document.addEventListener('DOMContentLoaded', triviaInit);
 
-// ── ENDORSEMENTS ENGINE ──
-const ENDORSE_COLORS = ['', 'gold', 'red', '', 'gold', 'red'];
-let endorsements = [];
 
-async function submitEndorsement() {
-  const name    = document.getElementById('e-name').value.trim();
-  const loc     = document.getElementById('e-location').value.trim();
-  const message = document.getElementById('e-message').value.trim();
-  const status  = document.getElementById('e-status');
-  const btn     = document.getElementById('e-submit');
-
-  if (!name) { setStatus('Please enter your name.', 'err'); return; }
-  if (message.length < 10) { setStatus('Please write at least a sentence or two!', 'err'); return; }
-
-  btn.disabled = true;
-  setStatus('🤖 Reviewing your message…', '');
-
-  try {
-    const resp = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 100,
-        system: `You are a content moderator for a local political campaign website. 
-Your job is to decide if a visitor endorsement message is appropriate to display publicly.
-
-APPROVE if the message:
-- Is supportive or positive about the candidate Dwayne Snyder
-- Expresses hope, civic encouragement, or community support
-- Is neutral and civic-minded (e.g. "I hope he wins")
-
-REJECT if the message:
-- Is negative, critical, or attacks the candidate or other candidates
-- Contains profanity, slurs, hate speech, or offensive content
-- Is spam, nonsensical, or clearly fake
-- Contains personal information like phone numbers or email addresses
-- Is overly political in a divisive or inflammatory way
-
-Respond with ONLY a JSON object in this exact format, nothing else:
-{"approved": true, "reason": "brief reason"}
-or
-{"approved": false, "reason": "brief reason"}`,
-        messages: [{ role: 'user', content: `Name: ${name}\nMessage: ${message}` }]
-      })
-    });
-
-    const data = await resp.json();
-    const raw = data.content?.map(c => c.text || '').join('') || '';
-    let result;
-    try {
-      result = JSON.parse(raw.replace(/```json|```/g, '').trim());
-    } catch(e) {
-      result = { approved: false, reason: 'Could not parse moderation result' };
-    }
-
-    if (result.approved) {
-      const card = { name, loc, message, color: ENDORSE_COLORS[endorsements.length % ENDORSE_COLORS.length] };
-      endorsements.unshift(card);
-      renderEndorsements();
-      document.getElementById('e-name').value = '';
-      document.getElementById('e-location').value = '';
-      document.getElementById('e-message').value = '';
-      setStatus('✅ Thank you! Your endorsement has been posted.', 'ok');
-      if (typeof gtag === 'function') gtag('event', 'endorsement_submitted', { name });
-    } else {
-      setStatus('⚠️ Your message couldn\'t be posted. Please keep it positive and supportive!', 'err');
-    }
-  } catch(err) {
-    setStatus('Could not connect to review service. Please try again.', 'err');
-  }
-
-  btn.disabled = false;
-}
-
-function setStatus(msg, type) {
-  const el = document.getElementById('e-status');
-  el.textContent = msg;
-  el.className = 'endorse-status' + (type ? ' ' + type : '');
-}
-
-function renderEndorsements() {
-  const wall = document.getElementById('endorse-wall');
-  if (!endorsements.length) {
-    wall.innerHTML = '<div class="endorse-empty">Be the first to leave an endorsement! 👆</div>';
-    return;
-  }
-  wall.innerHTML = endorsements.map((e, i) => {
-    const initials = e.name.split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
-    const colors = ['#0a1628','#c0202f','#c8973a','#1b263b'];
-    const bg = colors[i % colors.length];
-    return `
-    <div class="endorse-card ${e.color}" style="animation-delay:${i * 0.08}s">
-      <span class="endorse-quote-mark">"</span>
-      <p>${escHtml(e.message)}</p>
-      <div class="endorse-card-footer">
-        <div class="endorse-avatar" style="background:${bg}">${initials}</div>
-        <div>
-          <div class="endorse-name">${escHtml(e.name)}</div>
-          ${e.loc ? `<div class="endorse-location">📍 ${escHtml(e.loc)}</div>` : ''}
-        </div>
-      </div>
-    </div>`;
-  }).join('');
-}
-
-function escHtml(str) {
-  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
 </script>
 
 </body>
