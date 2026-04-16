@@ -18,11 +18,15 @@
 </script>
 
 <!-- Firebase SDK -->
+
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
+
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-check-compat.js"></script>
-  
+
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -739,6 +743,15 @@ footer {
   grid-column: 1/-1;
 }
 
+/* Video in endorsement card */
+.endorse-video {
+  width: 100%;
+  max-height: 250px;
+  border-radius: 4px;
+  margin-top: 12px;
+  border: 2px solid #f0f0f0;
+}
+
 /* Moderation badge */
 .mod-badge {
   display: inline-flex;
@@ -1162,8 +1175,8 @@ footer {
       <div class="rule"></div>
     </div>
 
-```
 <!-- GROUP 1 -->
+
 <div class="priority-group">
   <div class="priority-group-title">
     <span class="priority-number">01</span>
@@ -1186,6 +1199,7 @@ footer {
 </div>
 
 <!-- GROUP 2 -->
+
 <div class="priority-group">
   <div class="priority-group-title">
     <span class="priority-number">02</span>
@@ -1208,6 +1222,7 @@ footer {
 </div>
 
 <!-- GROUP 3 -->
+
 <div class="priority-group">
   <div class="priority-group-title">
     <span class="priority-number">03</span>
@@ -1224,7 +1239,6 @@ footer {
     </div>
   </div>
 </div>
-```
 
   </div>
 
@@ -1268,7 +1282,6 @@ footer {
       <div class="rule"></div>
     </div>
 
-```
 <p class="qual-intro">
   Dwayne Snyder brings over 40 years of financial leadership and public service to the community. His background as a former Mayor, City Council member, and banking professional gives him the experience needed to manage budgets, support economic growth, and serve with integrity.
 </p>
@@ -1315,7 +1328,6 @@ footer {
     </ul>
   </div>
 </div>
-```
 
   </div>
 
@@ -1331,7 +1343,6 @@ footer {
       <div class="rule"></div>
     </div>
 
-```
 <div class="reg-callout">
   <h3>Your Voice Is Your Vote</h3>
   <p>In Arkansas, paper registration is always an option. Download the official form below, print it, sign it, and mail it to your County Clerk — it only takes a few minutes.</p>
@@ -1349,7 +1360,6 @@ footer {
     height="620px"
   />
 </div>
-```
 
   </div>
 </div>
@@ -1369,19 +1379,19 @@ footer {
       <div class="rule"></div>
     </div>
 
-```
-<!-- Submit form -->
 <!-- Submit form with VIDEO UPLOAD -->
+
 <div class="endorse-form-wrap">
   <h3>✍️ Leave Your Endorsement</h3>
-  <p>Share why you support Dwayne — your message will appear below after a quick review.</p>
+  <p>Share why you support Dwayne — your message will appear below instantly.</p>
   <div class="endorse-fields">
     <input id="e-name" class="endorse-input" type="text" placeholder="Your Name *" maxlength="60">
     <input id="e-location" class="endorse-input" type="text" placeholder="Neighborhood / Street (optional)" maxlength="60">
   </div>
   <textarea id="e-message" class="endorse-textarea" placeholder="Why do you support Dwayne Snyder? (max 300 characters)" maxlength="300"></textarea>
-  
+
   <!-- VIDEO UPLOAD SECTION -->
+
   <div style="margin-bottom: 14px; position: relative;">
     <label style="display: block; color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 8px; font-weight: 600;">
       🎥 Add Video Testimonial (Optional)
@@ -1422,15 +1432,15 @@ footer {
       Max 50MB • MP4, WebM, MOV supported • Videos shared with all visitors
     </p>
   </div>
-  
+
   <div style="display:flex; align-items:center; flex-wrap:wrap; gap:14px; position:relative;">
     <button class="endorse-submit" id="e-submit" onclick="submitEndorsement()">Post My Endorsement</button>
-    <span class="mod-badge">🤖 AI-Moderated · Positive Only</span>
   </div>
   <div class="endorse-status" id="e-status"></div>
 </div>
 
 <!-- Live wall -->
+
 <div class="section-heading">
   <span class="label">From the Community</span>
   <h2>What Neighbors Are Saying</h2>
@@ -1439,7 +1449,6 @@ footer {
 <div class="endorse-wall" id="endorse-wall">
   <div class="endorse-empty">Loading endorsements... 🔄</div>
 </div>
-```
 
   </div>
 </div>
@@ -1454,8 +1463,8 @@ footer {
 
   <div class="container">
 
-```
 <!-- ── TRIVIA GAME ── -->
+
 <div class="section-heading">
   <span class="label">Gamified</span>
   <h2>How Well Do You Know Lowell?</h2>
@@ -1469,6 +1478,7 @@ footer {
   </div>
 
   <!-- Active quiz -->
+
   <div id="trivia-game">
     <div class="trivia-score-bar">
       <span class="trivia-score">⭐ Score: <span id="t-score">0</span></span>
@@ -1482,6 +1492,7 @@ footer {
   </div>
 
   <!-- Results screen -->
+
   <div class="trivia-result" id="trivia-result">
     <div class="big-score" id="t-final-score">0 / 8</div>
     <p id="t-result-msg">Great job!</p>
@@ -1490,6 +1501,7 @@ footer {
 </div>
 
 <!-- ── FACTS ── -->
+
 <div class="section-heading">
   <span class="label">Did You Know?</span>
   <h2>Lowell, Arkansas — Fast Facts</h2>
@@ -1536,6 +1548,7 @@ footer {
 </div>
 
 <!-- ── MAP ── -->
+
 <div class="map-section">
   <div class="section-heading">
     <span class="label">Your District</span>
@@ -1572,7 +1585,6 @@ footer {
     <span>📍 <strong>City Hall:</strong> 201 W. Monroe Ave, Lowell, AR 72745</span>
   </div>
 </div>
-```
 
   </div>
 </div>
@@ -1583,9 +1595,8 @@ footer {
 
 <script>
 
-  // ══════════════════════════════════════════════════════════════════════
-// COMPLETE FIREBASE + ENDORSEMENTS JAVASCRIPT
-// Copy this entire section into your <script> tag (REPLACE endorsement code)
+// ══════════════════════════════════════════════════════════════════════
+// FIREBASE + ENDORSEMENTS - NO AI MODERATION
 // ══════════════════════════════════════════════════════════════════════
  
 // ── FIREBASE CONFIGURATION ──
@@ -1607,13 +1618,13 @@ const storage = firebase.storage();
 // Initialize App Check with reCAPTCHA
 const appCheck = firebase.appCheck();
 appCheck.activate(
-  '6LeOTrksAAAAABFmDAxGSS75h0pzP-XibtlybPmP',  // Your reCAPTCHA site key
-  true // Enable token auto-refresh
+  '6LeOTrksAAAAABFmDAxGSS75h0pzP-XibtlybPmP',
+  true
 );
  
 console.log("✅ Firebase + App Check initialized!");
  
-// ── TAB NAVIGATION (Keep your existing function if you have it) ──
+// ── TAB NAVIGATION ──
 function openTab(evt, tabName) {
   document.querySelectorAll('.tab-content').forEach(el => {
     el.style.display = 'none';
@@ -1695,7 +1706,7 @@ function clearVideo() {
   document.getElementById('video-preview-player').src = '';
 }
  
-// Submit endorsement
+// Submit endorsement (NO AI MODERATION)
 async function submitEndorsement() {
   const name = document.getElementById('e-name').value.trim();
   const loc = document.getElementById('e-location').value.trim();
@@ -1706,85 +1717,42 @@ async function submitEndorsement() {
   if (message.length < 10) { setStatus('Please write at least a sentence or two!', 'err'); return; }
  
   btn.disabled = true;
-  setStatus('🤖 Reviewing your message…', '');
+  setStatus('📤 Posting your endorsement...', '');
  
   try {
-    // AI Moderation
-    const resp = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 100,
-        system: `You are a content moderator for a local political campaign website. 
-Your job is to decide if a visitor endorsement message is appropriate to display publicly.
- 
-APPROVE if the message:
-- Is supportive or positive about the candidate Dwayne Snyder
-- Expresses hope, civic encouragement, or community support
-- Is neutral and civic-minded (e.g. "I hope he wins")
- 
-REJECT if the message:
-- Is negative, critical, or attacks the candidate or other candidates
-- Contains profanity, slurs, hate speech, or offensive content
-- Is spam, nonsensical, or clearly fake
-- Contains personal information like phone numbers or email addresses
-- Is overly political in a divisive or inflammatory way
- 
-Respond with ONLY a JSON object in this exact format, nothing else:
-{"approved": true, "reason": "brief reason"}
-or
-{"approved": false, "reason": "brief reason"}`,
-        messages: [{ role: 'user', content: `Name: ${name}\nMessage: ${message}` }]
-      })
-    });
- 
-    const data = await resp.json();
-    const raw = data.content?.map(c => c.text || '').join('') || '';
-    let result;
-    try {
-      result = JSON.parse(raw.replace(/```json|```/g, '').trim());
-    } catch(e) {
-      result = { approved: false, reason: 'Could not parse moderation result' };
+    let videoUrl = null;
+    
+    // Upload video if present
+    if (currentVideoFile) {
+      setStatus('📹 Uploading video...', '');
+      const videoRef = storage.ref(`endorsement-videos/${Date.now()}_${currentVideoFile.name}`);
+      const uploadTask = await videoRef.put(currentVideoFile);
+      videoUrl = await uploadTask.ref.getDownloadURL();
     }
- 
-    if (result.approved) {
-      let videoUrl = null;
-      
-      // Upload video if present
-      if (currentVideoFile) {
-        setStatus('📹 Uploading video...', '');
-        const videoRef = storage.ref(`endorsement-videos/${Date.now()}_${currentVideoFile.name}`);
-        const uploadTask = await videoRef.put(currentVideoFile);
-        videoUrl = await uploadTask.ref.getDownloadURL();
-      }
-      
-      // Save to Firestore
-      await db.collection('endorsements').add({
-        name,
-        location: loc,
-        message,
-        videoUrl,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-        createdAt: new Date().toISOString()
-      });
-      
-      // Clear form
-      document.getElementById('e-name').value = '';
-      document.getElementById('e-location').value = '';
-      document.getElementById('e-message').value = '';
-      clearVideo();
-      
-      setStatus('✅ Thank you! Your endorsement has been posted.', 'ok');
-      if (typeof gtag === 'function') {
-        gtag('event', 'endorsement_submitted', { name, has_video: !!videoUrl });
-      }
-    } else {
-      setStatus('⚠️ Your message couldn\'t be posted. Please keep it positive and supportive!', 'err');
+    
+    // Save to Firestore
+    await db.collection('endorsements').add({
+      name,
+      location: loc,
+      message,
+      videoUrl,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      createdAt: new Date().toISOString()
+    });
+    
+    // Clear form
+    document.getElementById('e-name').value = '';
+    document.getElementById('e-location').value = '';
+    document.getElementById('e-message').value = '';
+    clearVideo();
+    
+    setStatus('✅ Thank you! Your endorsement has been posted.', 'ok');
+    if (typeof gtag === 'function') {
+      gtag('event', 'endorsement_submitted', { name, has_video: !!videoUrl });
     }
   } catch(err) {
     console.error('Submission error:', err);
-    setStatus('Could not submit. Please try again or check your internet connection.', 'err');
+    setStatus('Error: ' + err.message, 'err');
   }
  
   btn.disabled = false;
@@ -1841,9 +1809,9 @@ window.addEventListener('beforeunload', () => {
 });
  
 // ══════════════════════════════════════════════════════════════════════
-// KEEP YOUR EXISTING TRIVIA CODE BELOW THIS LINE
+// TRIVIA GAME
 // ══════════════════════════════════════════════════════════════════════
-// ── TRIVIA ENGINE ──
+
 const TRIVIA = [
   {
     q: "Approximately how many people live in Lowell, Arkansas today?",
@@ -1988,7 +1956,6 @@ function triviaRestart() { triviaInit(); }
 
 // Auto-init trivia when tab is first opened
 document.addEventListener('DOMContentLoaded', triviaInit);
-
 
 </script>
 
