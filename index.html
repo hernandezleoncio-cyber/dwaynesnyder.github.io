@@ -17,15 +17,11 @@
   gtag('config', 'G-S2CWC8G241');
 </script>
 
-<!-- Firebase SDK -->
+<!-- Firebase SDK - NO STORAGE -->
 
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
-
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-check-compat.js"></script>
 
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -57,7 +53,6 @@ header {
   text-align: center;
 }
 
-/* Diagonal stripe texture */
 header::before {
   content: '';
   position: absolute;
@@ -72,7 +67,6 @@ header::before {
   pointer-events: none;
 }
 
-/* Gold line now lives on ticker above header */
 header::after {
   display: none;
 }
@@ -117,7 +111,6 @@ h1 span {
   animation: fadeUp 0.7s ease 0.4s forwards;
 }
 
-/* Photo with decorative frame */
 .photo-wrap {
   position: relative;
   display: inline-block;
@@ -146,7 +139,6 @@ h1 span {
   filter: grayscale(20%);
 }
 
-/* Red bar below header */
 .header-bar {
   height: 8px;
   background: var(--red);
@@ -203,11 +195,9 @@ nav {
   background: rgba(255,255,255,0.05);
 }
 
-/* ── TAB CONTENT ── */
 .tab-content { display: none; }
 .tab-content.active { display: block; }
 
-/* ── HOME HERO STRIP ── */
 .hero-strip {
   background: var(--red);
   color: #fff;
@@ -224,14 +214,12 @@ nav {
   color: var(--gold);
 }
 
-/* ── CONTAINER ── */
 .container {
   max-width: 880px;
   margin: 0 auto;
   padding: 60px 24px;
 }
 
-/* ── SECTION HEADING ── */
 .section-heading {
   text-align: center;
   margin-bottom: 48px;
@@ -262,7 +250,6 @@ nav {
   margin: 16px auto 0;
 }
 
-/* ── PRIORITY CARDS ── */
 .priority-group {
   margin-bottom: 48px;
 }
@@ -337,7 +324,6 @@ nav {
   line-height: 1.6;
 }
 
-/* ── CTA BAND ── */
 .cta-band {
   background: var(--navy);
   text-align: center;
@@ -395,7 +381,6 @@ nav {
   border-color: var(--gold);
 }
 
-/* ── QR SECTION ── */
 .qr-section {
   text-align: center;
   padding: 40px 24px 0;
@@ -416,7 +401,6 @@ nav {
   margin-top: 10px;
 }
 
-/* ── QUALIFICATIONS ── */
 .qual-intro {
   font-size: 1.15rem;
   line-height: 1.8;
@@ -513,7 +497,6 @@ nav {
   margin-top: 6px;
 }
 
-/* ── REGISTRATION ── */
 .reg-callout {
   background: var(--off-white);
   border: 2px solid var(--navy);
@@ -560,7 +543,6 @@ nav {
   overflow: hidden;
 }
 
-/* ── FOOTER ── */
 footer {
   background: #060e1a;
   color: rgba(255,255,255,0.35);
@@ -572,7 +554,6 @@ footer {
   border-top: 4px solid var(--red);
 }
 
-/* ── ANIMATIONS ── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -676,7 +657,6 @@ footer {
 .endorse-status.ok  { color: #86efac; }
 .endorse-status.err { color: #fca5a5; }
 
-/* Cards wall */
 .endorse-wall {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
@@ -743,31 +723,6 @@ footer {
   grid-column: 1/-1;
 }
 
-/* Video in endorsement card */
-.endorse-video {
-  width: 100%;
-  max-height: 250px;
-  border-radius: 4px;
-  margin-top: 12px;
-  border: 2px solid #f0f0f0;
-}
-
-/* Moderation badge */
-.mod-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(200,151,58,0.15);
-  border: 1px solid rgba(200,151,58,0.3);
-  color: var(--gold);
-  font-size: 0.72rem;
-  letter-spacing: 1px;
-  padding: 4px 10px;
-  border-radius: 20px;
-  font-family: 'Bebas Neue', sans-serif;
-  margin-left: auto;
-}
-
 .facts-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -823,7 +778,6 @@ footer {
   user-select: none;
 }
 
-/* ── MAP ── */
 .map-section {
   margin-bottom: 60px;
 }
@@ -847,7 +801,6 @@ footer {
   box-shadow: 0 4px 20px rgba(0,0,0,0.12);
 }
 
-/* ── TRIVIA GAME ── */
 .trivia-wrap {
   background: var(--navy);
   border-radius: 6px;
@@ -1045,7 +998,6 @@ footer {
 }
 .streak-badge.show { opacity: 1; }
 
-/* ── TICKER RIBBON ── */
 .ticker-wrap {
   background: var(--navy);
   border-top: 4px solid var(--gold);
@@ -1055,7 +1007,6 @@ footer {
   position: relative;
 }
 
-/* Fade edges */
 .ticker-wrap::before,
 .ticker-wrap::after {
   content: '';
@@ -1115,8 +1066,6 @@ footer {
 </head>
 <body>
 
-<!-- ══════════════ TICKER RIBBON ══════════════ -->
-
 <div class="ticker-wrap" aria-hidden="true">
   <div class="ticker-track">
     <span class="ticker-item"><strong>Your Vote Matters</strong> — Make Your Voice Heard in Lowell<span class="dot">★</span></span>
@@ -1138,8 +1087,6 @@ footer {
   </div>
 </div>
 
-<!-- ══════════════ HEADER ══════════════ -->
-
 <header>
   <div class="header-eyebrow">Lowell City Council · Ward 4 · Position 2</div>
   <h1>Dwayne<span>Snyder</span></h1>
@@ -1150,8 +1097,6 @@ footer {
 </header>
 <div class="header-bar"></div>
 
-<!-- ══════════════ NAV ══════════════ -->
-
 <nav>
   <button class="tab-button active" onclick="openTab(event,'home')">Home</button>
   <button class="tab-button" onclick="openTab(event,'qualifications')">Qualifications</button>
@@ -1159,8 +1104,6 @@ footer {
   <button class="tab-button" onclick="openTab(event,'registration')">Register</button>
   <button class="tab-button" onclick="openTab(event,'explore')">Explore</button>
 </nav>
-
-<!-- ══════════════ HOME ══════════════ -->
 
 <div id="home" class="tab-content active">
 
@@ -1174,8 +1117,6 @@ footer {
       <h2>Putting Our Community First</h2>
       <div class="rule"></div>
     </div>
-
-<!-- GROUP 1 -->
 
 <div class="priority-group">
   <div class="priority-group-title">
@@ -1198,8 +1139,6 @@ footer {
   </div>
 </div>
 
-<!-- GROUP 2 -->
-
 <div class="priority-group">
   <div class="priority-group-title">
     <span class="priority-number">02</span>
@@ -1220,8 +1159,6 @@ footer {
     </div>
   </div>
 </div>
-
-<!-- GROUP 3 -->
 
 <div class="priority-group">
   <div class="priority-group-title">
@@ -1255,8 +1192,6 @@ footer {
   <br><br>
 
 </div>
-
-<!-- ══════════════ QUALIFICATIONS ══════════════ -->
 
 <div id="qualifications" class="tab-content">
 
@@ -1333,8 +1268,6 @@ footer {
 
 </div>
 
-<!-- ══════════════ REGISTRATION ══════════════ -->
-
 <div id="registration" class="tab-content">
   <div class="container">
     <div class="section-heading">
@@ -1364,8 +1297,6 @@ footer {
   </div>
 </div>
 
-<!-- ══════════════ ENDORSEMENTS ══════════════ -->
-
 <div id="endorsements" class="tab-content">
 
   <div class="hero-strip">
@@ -1379,8 +1310,6 @@ footer {
       <div class="rule"></div>
     </div>
 
-<!-- Submit form with VIDEO UPLOAD -->
-
 <div class="endorse-form-wrap">
   <h3>✍️ Leave Your Endorsement</h3>
   <p>Share why you support Dwayne — your message will appear below instantly.</p>
@@ -1390,56 +1319,11 @@ footer {
   </div>
   <textarea id="e-message" class="endorse-textarea" placeholder="Why do you support Dwayne Snyder? (max 300 characters)" maxlength="300"></textarea>
 
-  <!-- VIDEO UPLOAD SECTION -->
-
-  <div style="margin-bottom: 14px; position: relative;">
-    <label style="display: block; color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 8px; font-weight: 600;">
-      🎥 Add Video Testimonial (Optional)
-    </label>
-    <input type="file" id="e-video" accept="video/*" style="
-      background: rgba(255,255,255,0.07);
-      border: 2px dashed rgba(255,255,255,0.3);
-      color: #fff;
-      padding: 12px;
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: 0.9rem;
-      border-radius: 3px;
-      width: 100%;
-      cursor: pointer;
-      transition: border-color 0.2s;
-    " onchange="handleVideoSelect(this)">
-    <div id="video-preview" style="margin-top: 12px; display: none;">
-      <video id="video-preview-player" controls style="
-        width: 100%;
-        max-width: 400px;
-        max-height: 250px;
-        border-radius: 4px;
-        border: 2px solid var(--gold);
-      "></video>
-      <button type="button" onclick="clearVideo()" style="
-        background: rgba(192, 32, 47, 0.3);
-        border: 1px solid var(--red);
-        color: #fff;
-        padding: 6px 16px;
-        font-size: 0.85rem;
-        border-radius: 3px;
-        cursor: pointer;
-        margin-top: 8px;
-        font-family: 'Source Sans 3', sans-serif;
-      ">Remove Video</button>
-    </div>
-    <p style="color: rgba(255,255,255,0.4); font-size: 0.78rem; margin-top: 6px; font-style: italic;">
-      Max 50MB • MP4, WebM, MOV supported • Videos shared with all visitors
-    </p>
-  </div>
-
   <div style="display:flex; align-items:center; flex-wrap:wrap; gap:14px; position:relative;">
     <button class="endorse-submit" id="e-submit" onclick="submitEndorsement()">Post My Endorsement</button>
   </div>
   <div class="endorse-status" id="e-status"></div>
 </div>
-
-<!-- Live wall -->
 
 <div class="section-heading">
   <span class="label">From the Community</span>
@@ -1453,8 +1337,6 @@ footer {
   </div>
 </div>
 
-<!-- ══════════════ EXPLORE LOWELL ══════════════ -->
-
 <div id="explore" class="tab-content">
 
   <div class="hero-strip">
@@ -1462,8 +1344,6 @@ footer {
   </div>
 
   <div class="container">
-
-<!-- ── TRIVIA GAME ── -->
 
 <div class="section-heading">
   <span class="label">Gamified</span>
@@ -1477,8 +1357,6 @@ footer {
     <p>Test your knowledge — earn points for every correct answer</p>
   </div>
 
-  <!-- Active quiz -->
-
   <div id="trivia-game">
     <div class="trivia-score-bar">
       <span class="trivia-score">⭐ Score: <span id="t-score">0</span></span>
@@ -1491,16 +1369,12 @@ footer {
     <button class="trivia-next" id="t-next" onclick="triviaNext()">Next Question →</button>
   </div>
 
-  <!-- Results screen -->
-
   <div class="trivia-result" id="trivia-result">
     <div class="big-score" id="t-final-score">0 / 8</div>
     <p id="t-result-msg">Great job!</p>
     <button class="trivia-restart" onclick="triviaRestart()">🔄 Play Again</button>
   </div>
 </div>
-
-<!-- ── FACTS ── -->
 
 <div class="section-heading">
   <span class="label">Did You Know?</span>
@@ -1547,8 +1421,6 @@ footer {
   </div>
 </div>
 
-<!-- ── MAP ── -->
-
 <div class="map-section">
   <div class="section-heading">
     <span class="label">Your District</span>
@@ -1589,42 +1461,28 @@ footer {
   </div>
 </div>
 
-<!-- ══════════════ FOOTER ══════════════ -->
-
 <footer>Paid for by Friends of Dwayne Snyder</footer>
 
 <script>
 
 // ══════════════════════════════════════════════════════════════════════
-// FIREBASE + ENDORSEMENTS - NO AI MODERATION
+// FIREBASE + ENDORSEMENTS - TEXT ONLY (NO VIDEO/STORAGE)
 // ══════════════════════════════════════════════════════════════════════
  
-// ── FIREBASE CONFIGURATION ──
 const firebaseConfig = {
   apiKey: "AIzaSyBZiO7I7klHUe38VJOeMajpRj3NerhMxvg",
   authDomain: "citycouncil-b596b.firebaseapp.com",
   projectId: "citycouncil-b596b",
   storageBucket: "citycouncil-b596b.firebasestorage.app",
   messagingSenderId: "968399142325",
-  appId: "1:968399142325:web:79e9429b990d809048edfc",
-  measurementId: "G-1W9SZDCNP4"
+  appId: "1:968399142325:web:79e9429b990d809048edfc"
 };
  
-// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
-const storage = firebase.storage();
  
-// Initialize App Check with reCAPTCHA
-const appCheck = firebase.appCheck();
-appCheck.activate(
-  '6LeOTrksAAAAABFmDAxGSS75h0pzP-XibtlybPmP',
-  true
-);
+console.log("✅ Firebase initialized!");
  
-console.log("✅ Firebase + App Check initialized!");
- 
-// ── TAB NAVIGATION ──
 function openTab(evt, tabName) {
   document.querySelectorAll('.tab-content').forEach(el => {
     el.style.display = 'none';
@@ -1650,12 +1508,9 @@ function openTab(evt, tabName) {
   window.scrollTo(0, 0);
 }
 
-// ── ENDORSEMENTS ENGINE WITH FIREBASE + VIDEO SUPPORT ──
 const ENDORSE_COLORS = ['', 'gold', 'red', '', 'gold', 'red'];
-let currentVideoFile = null;
 let unsubscribe = null;
  
-// Load endorsements with real-time updates
 function loadEndorsements() {
   unsubscribe = db.collection('endorsements')
     .orderBy('timestamp', 'desc')
@@ -1672,41 +1527,6 @@ function loadEndorsements() {
     });
 }
  
-// Handle video file selection
-function handleVideoSelect(input) {
-  const file = input.files[0];
-  if (!file) return;
-  
-  if (file.size > 50 * 1024 * 1024) {
-    setStatus('Video file is too large. Maximum size is 50MB.', 'err');
-    input.value = '';
-    return;
-  }
-  
-  if (!file.type.startsWith('video/')) {
-    setStatus('Please select a valid video file.', 'err');
-    input.value = '';
-    return;
-  }
-  
-  currentVideoFile = file;
-  
-  const preview = document.getElementById('video-preview');
-  const player = document.getElementById('video-preview-player');
-  const url = URL.createObjectURL(file);
-  player.src = url;
-  preview.style.display = 'block';
-}
- 
-// Clear video selection
-function clearVideo() {
-  currentVideoFile = null;
-  document.getElementById('e-video').value = '';
-  document.getElementById('video-preview').style.display = 'none';
-  document.getElementById('video-preview-player').src = '';
-}
- 
-// Submit endorsement (NO AI MODERATION)
 async function submitEndorsement() {
   const name = document.getElementById('e-name').value.trim();
   const loc = document.getElementById('e-location').value.trim();
@@ -1720,35 +1540,21 @@ async function submitEndorsement() {
   setStatus('📤 Posting your endorsement...', '');
  
   try {
-    let videoUrl = null;
-    
-    // Upload video if present
-    if (currentVideoFile) {
-      setStatus('📹 Uploading video...', '');
-      const videoRef = storage.ref(`endorsement-videos/${Date.now()}_${currentVideoFile.name}`);
-      const uploadTask = await videoRef.put(currentVideoFile);
-      videoUrl = await uploadTask.ref.getDownloadURL();
-    }
-    
-    // Save to Firestore
     await db.collection('endorsements').add({
       name,
       location: loc,
       message,
-      videoUrl,
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       createdAt: new Date().toISOString()
     });
     
-    // Clear form
     document.getElementById('e-name').value = '';
     document.getElementById('e-location').value = '';
     document.getElementById('e-message').value = '';
-    clearVideo();
     
     setStatus('✅ Thank you! Your endorsement has been posted.', 'ok');
     if (typeof gtag === 'function') {
-      gtag('event', 'endorsement_submitted', { name, has_video: !!videoUrl });
+      gtag('event', 'endorsement_submitted', { name });
     }
   } catch(err) {
     console.error('Submission error:', err);
@@ -1781,7 +1587,6 @@ function renderEndorsements(endorsements) {
     <div class="endorse-card ${color}" style="animation-delay:${Math.min(i * 0.08, 1)}s">
       <span class="endorse-quote-mark">"</span>
       <p>${escHtml(e.message)}</p>
-      ${e.videoUrl ? `<video class="endorse-video" controls><source src="${e.videoUrl}" type="video/mp4">Your browser does not support video.</video>` : ''}
       <div class="endorse-card-footer">
         <div class="endorse-avatar" style="background:${bg}">${initials}</div>
         <div>
@@ -1798,12 +1603,10 @@ function escHtml(str) {
   return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
  
-// Load endorsements when page loads
 document.addEventListener('DOMContentLoaded', () => {
   loadEndorsements();
 });
  
-// Cleanup listener on page unload
 window.addEventListener('beforeunload', () => {
   if (unsubscribe) unsubscribe();
 });
@@ -1954,7 +1757,6 @@ function triviaFinish() {
 
 function triviaRestart() { triviaInit(); }
 
-// Auto-init trivia when tab is first opened
 document.addEventListener('DOMContentLoaded', triviaInit);
 
 </script>
