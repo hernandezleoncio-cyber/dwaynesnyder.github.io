@@ -18,9 +18,11 @@
 </script>
 
 <!-- Firebase SDK - NO STORAGE -->
+
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-  
+
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -1100,10 +1102,11 @@ footer {
   <button class="tab-button active" onclick="openTab(event,'home')">Home</button>
   <button class="tab-button" onclick="openTab(event,'qualifications')">Qualifications</button>
   <button class="tab-button" onclick="openTab(event,'cityupdates')">City Updates</button>
- 
   <button class="tab-button" onclick="openTab(event,'registration')">Register</button>
   <button class="tab-button" onclick="openTab(event,'explore')">Explore</button>
 </nav>
+
+<!-- ══════════════════════════════════════════════════════ HOME TAB -->
 
 <div id="home" class="tab-content active">
 
@@ -1118,10 +1121,11 @@ footer {
       <div class="rule"></div>
     </div>
 
+```
 <div class="priority-group">
   <div class="priority-group-title">
     <span class="priority-number">01</span>
-    Fiscal Responsibility & Smarter Governance
+    Fiscal Responsibility &amp; Smarter Governance
   </div>
   <div class="priority-cards">
     <div class="priority-card">
@@ -1142,7 +1146,7 @@ footer {
 <div class="priority-group">
   <div class="priority-group-title">
     <span class="priority-number">02</span>
-    Public Safety & Community Stability
+    Public Safety &amp; Community Stability
   </div>
   <div class="priority-cards">
     <div class="priority-card accent">
@@ -1176,6 +1180,7 @@ footer {
     </div>
   </div>
 </div>
+```
 
   </div>
 
@@ -1192,6 +1197,8 @@ footer {
   <br><br>
 
 </div>
+
+<!-- ══════════════════════════════════════════════════════ QUALIFICATIONS TAB -->
 
 <div id="qualifications" class="tab-content">
 
@@ -1217,6 +1224,7 @@ footer {
       <div class="rule"></div>
     </div>
 
+```
 <p class="qual-intro">
   Dwayne Snyder brings over 40 years of financial leadership and public service to the community. His background as a former Mayor, City Council member, and banking professional gives him the experience needed to manage budgets, support economic growth, and serve with integrity.
 </p>
@@ -1225,12 +1233,12 @@ footer {
   <div class="qual-block">
     <h3>Core Competencies</h3>
     <ul>
-      <li>Municipal leadership & governance</li>
+      <li>Municipal leadership &amp; governance</li>
       <li>40+ years financial leadership</li>
       <li>Economic development initiatives</li>
       <li>Community engagement</li>
-      <li>Financial analysis & risk management</li>
-      <li>Team leadership & operations</li>
+      <li>Financial analysis &amp; risk management</li>
+      <li>Team leadership &amp; operations</li>
     </ul>
   </div>
 
@@ -1263,10 +1271,13 @@ footer {
     </ul>
   </div>
 </div>
+```
 
   </div>
 
 </div>
+
+<!-- ══════════════════════════════════════════════════════ CITY UPDATES TAB -->
 
 <div id="cityupdates" class="tab-content">
 
@@ -1281,6 +1292,7 @@ footer {
       <div class="rule"></div>
     </div>
 
+```
 <p style="text-align:center; color:#666; margin-bottom:50px; font-size:1.05rem; line-height:1.7; max-width:700px; margin-left:auto; margin-right:auto;">
   Democracy works best when citizens stay informed. Here's what's happening at City Hall, what decisions are being made, and where I stand on the issues that matter most to Ward 4.
 </p>
@@ -1296,7 +1308,10 @@ footer {
     </div>
 
     <div style="background:rgba(255,255,255,0.05); border:2px solid rgba(200,151,58,0.3); border-radius:4px; padding:32px 28px; text-align:center;">
-      <div style="font-family:'Playfair Display',serif; font-size:2.8rem; color:var(--gold); font-weight:700; margin-bottom:8px;">Tuesday, May 20, 2026</div>
+      <!-- ✅ DYNAMIC DATE — auto-calculates the next 3rd Tuesday each month -->
+      <div id="meeting-date-display" style="font-family:'Playfair Display',serif; font-size:2.8rem; color:var(--gold); font-weight:700; margin-bottom:8px;">
+        Loading…
+      </div>
       <div style="font-size:1.3rem; color:rgba(255,255,255,0.8); margin-bottom:20px;">6:30 PM – 7:30 PM</div>
       <div style="font-size:1rem; color:rgba(255,255,255,0.6); margin-bottom:28px;">📍 Lowell City Hall · 216 N. Lincoln St, Lowell, AR 72745</div>
       
@@ -1354,9 +1369,6 @@ footer {
     </div>
   </div>
 
-  
-  </div>
-
 </div>
 
 <!-- ═══ LOWELL IN THE NEWS ═══ -->
@@ -1403,7 +1415,7 @@ footer {
   <a href="https://www.lowellarkansas.gov/meetings" target="_blank" style="display:block; background:var(--navy); color:#fff; padding:24px; border-radius:4px; text-decoration:none; transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
     <div style="font-size:2rem; margin-bottom:10px;">📅</div>
     <div style="font-family:'Bebas Neue',sans-serif; font-size:1.2rem; letter-spacing:2px; margin-bottom:6px;">Meeting Calendar</div>
-    <div style="font-size:0.85rem; color:rgba(255,255,255,0.6);">Upcoming agendas & schedules</div>
+    <div style="font-size:0.85rem; color:rgba(255,255,255,0.6);">Upcoming agendas &amp; schedules</div>
   </a>
 
   <a href="https://www.lowellarkansas.gov/meetings/recent" target="_blank" style="display:block; background:var(--red); color:#fff; padding:24px; border-radius:4px; text-decoration:none; transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
@@ -1434,9 +1446,12 @@ footer {
     ✉️ Contact Dwayne
   </a>
 </div>
+```
 
   </div>
 </div>
+
+<!-- ══════════════════════════════════════════════════════ REGISTRATION TAB -->
 
 <div id="registration" class="tab-content">
   <div class="container">
@@ -1446,6 +1461,7 @@ footer {
       <div class="rule"></div>
     </div>
 
+```
 <div class="reg-callout">
   <h3>Your Voice Is Your Vote</h3>
   <p>In Arkansas, paper registration is always an option. Download the official form below, print it, sign it, and mail it to your County Clerk — it only takes a few minutes.</p>
@@ -1463,9 +1479,12 @@ footer {
     height="620px"
   />
 </div>
+```
 
   </div>
 </div>
+
+<!-- ══════════════════════════════════════════════════════ ENDORSEMENTS TAB -->
 
 <div id="endorsements" class="tab-content">
 
@@ -1480,6 +1499,7 @@ footer {
       <div class="rule"></div>
     </div>
 
+```
 <div class="endorse-form-wrap">
   <h3>✍️ Leave Your Endorsement</h3>
   <p>Share why you support Dwayne — your message will appear below instantly.</p>
@@ -1503,9 +1523,12 @@ footer {
 <div class="endorse-wall" id="endorse-wall">
   <div class="endorse-empty">Loading endorsements... 🔄</div>
 </div>
+```
 
   </div>
 </div>
+
+<!-- ══════════════════════════════════════════════════════ EXPLORE TAB -->
 
 <div id="explore" class="tab-content">
 
@@ -1515,6 +1538,7 @@ footer {
 
   <div class="container">
 
+```
 <div class="section-heading">
   <span class="label">Gamified</span>
   <h2>How Well Do You Know Lowell?</h2>
@@ -1540,7 +1564,7 @@ footer {
   </div>
 
   <div class="trivia-result" id="trivia-result">
-    <div class="big-score" id="t-final-score">0 / 8</div>
+    <div class="big-score" id="t-final-score">0 / 9</div>
     <p id="t-result-msg">Great job!</p>
     <button class="trivia-restart" onclick="triviaRestart()">🔄 Play Again</button>
   </div>
@@ -1627,6 +1651,7 @@ footer {
     <span>📍 <strong>City Hall:</strong> 201 W. Monroe Ave, Lowell, AR 72745</span>
   </div>
 </div>
+```
 
   </div>
 </div>
@@ -1636,10 +1661,82 @@ footer {
 <script>
 
 // ══════════════════════════════════════════════════════════════════════
+// DYNAMIC MEETING DATE — 3rd Tuesday of current (or next) month
+// ══════════════════════════════════════════════════════════════════════
+
+/**
+ * Returns a Date object for the Nth occurrence of a given weekday
+ * within the specified month/year.
+ * @param {number} year   - Full year (e.g. 2026)
+ * @param {number} month  - 0-indexed month (0 = January)
+ * @param {number} weekday - 0=Sun, 1=Mon, 2=Tue … 6=Sat
+ * @param {number} nth    - Which occurrence (1 = first, 2 = second, etc.)
+ */
+function getNthWeekdayOfMonth(year, month, weekday, nth) {
+  let count = 0;
+  for (let day = 1; day <= 31; day++) {
+    const d = new Date(year, month, day);
+    // Stop if we've rolled into the next month
+    if (d.getMonth() !== month) break;
+    if (d.getDay() === weekday) {
+      count++;
+      if (count === nth) return d;
+    }
+  }
+  return null; // Should never happen for valid inputs
+}
+
+/**
+ * Formats a Date as "Tuesday, May 20, 2026"
+ */
+function formatMeetingDate(d) {
+  return d.toLocaleDateString('en-US', {
+    weekday: 'long',
+    year:    'numeric',
+    month:   'long',
+    day:     'numeric'
+  });
+}
+
+/**
+ * Finds the next upcoming 3rd Tuesday.
+ * - If today is BEFORE the 3rd Tuesday of this month → show this month's date.
+ * - If today IS the 3rd Tuesday → still show it (meeting is today!).
+ * - If today is AFTER the 3rd Tuesday → advance to next month.
+ */
+function getNextThirdTuesday() {
+  const now   = new Date();
+  const year  = now.getFullYear();
+  const month = now.getMonth();
+
+  let meeting = getNthWeekdayOfMonth(year, month, 2, 3); // 2 = Tuesday
+
+  // Compare date-only (ignore time) so the meeting shows on the day itself
+  const todayMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const meetingMidnight = new Date(meeting.getFullYear(), meeting.getMonth(), meeting.getDate());
+
+  if (todayMidnight > meetingMidnight) {
+    // This month's meeting has passed — calculate next month's
+    const nextMonth = month === 11 ? 0 : month + 1;
+    const nextYear  = month === 11 ? year + 1 : year;
+    meeting = getNthWeekdayOfMonth(nextYear, nextMonth, 2, 3);
+  }
+
+  return meeting;
+}
+
+function updateMeetingDate() {
+  const meeting = getNextThirdTuesday();
+  const el = document.getElementById('meeting-date-display');
+  if (el) {
+    el.textContent = formatMeetingDate(meeting);
+  }
+}
+
+// ══════════════════════════════════════════════════════════════════════
 // FIREBASE + ENDORSEMENTS - TEXT ONLY (NO VIDEO/STORAGE)
 // ══════════════════════════════════════════════════════════════════════
 
-// CHECK IF FIREBASE LOADED
 if (typeof firebase === 'undefined') {
   console.error('🚨 FIREBASE NOT LOADED! Scripts blocked or failed to load from CDN.');
   document.getElementById('endorse-wall').innerHTML = 
@@ -1707,7 +1804,6 @@ function loadEndorsements() {
   
   console.log('🔍 Attempting to load endorsements...');
   
-  // Try simple get first
   db.collection('endorsements').get()
     .then((snapshot) => {
       console.log('✅ Initial load successful! Found', snapshot.size, 'endorsements');
@@ -1717,7 +1813,6 @@ function loadEndorsements() {
       });
       renderEndorsements(endorsements);
       
-      // Now set up real-time listener
       unsubscribe = db.collection('endorsements')
         .orderBy('timestamp', 'desc')
         .onSnapshot((snapshot) => {
@@ -1743,33 +1838,31 @@ async function submitEndorsement() {
     return;
   }
   
-  const name = document.getElementById('e-name').value.trim();
-  const loc = document.getElementById('e-location').value.trim();
+  const name    = document.getElementById('e-name').value.trim();
+  const loc     = document.getElementById('e-location').value.trim();
   const message = document.getElementById('e-message').value.trim();
-  const btn = document.getElementById('e-submit');
+  const btn     = document.getElementById('e-submit');
  
-  if (!name) { setStatus('Please enter your name.', 'err'); return; }
+  if (!name)              { setStatus('Please enter your name.', 'err'); return; }
   if (message.length < 10) { setStatus('Please write at least 10 characters!', 'err'); return; }
  
   btn.disabled = true;
   setStatus('📤 Posting your endorsement...', '');
  
-  console.log('🚀 Attempting to submit:', { name, location: loc, message: message.substring(0, 30) + '...' });
- 
   try {
     const docRef = await db.collection('endorsements').add({
-      name: name,
-      location: loc || '',
-      message: message,
+      name:      name,
+      location:  loc || '',
+      message:   message,
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       createdAt: new Date().toISOString()
     });
     
     console.log('✅ Endorsement created with ID:', docRef.id);
     
-    document.getElementById('e-name').value = '';
+    document.getElementById('e-name').value    = '';
     document.getElementById('e-location').value = '';
-    document.getElementById('e-message').value = '';
+    document.getElementById('e-message').value  = '';
     
     setStatus('✅ Thank you! Your endorsement has been posted.', 'ok');
     
@@ -1799,9 +1892,9 @@ function renderEndorsements(endorsements) {
   
   wall.innerHTML = endorsements.map((e, i) => {
     const initials = e.name.split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
-    const colors = ['#0a1628','#c0202f','#c8973a','#1b263b'];
-    const bg = colors[i % colors.length];
-    const color = ENDORSE_COLORS[i % ENDORSE_COLORS.length];
+    const colors   = ['#0a1628','#c0202f','#c8973a','#1b263b'];
+    const bg       = colors[i % colors.length];
+    const color    = ENDORSE_COLORS[i % ENDORSE_COLORS.length];
     
     return `
     <div class="endorse-card ${color}" style="animation-delay:${Math.min(i * 0.08, 1)}s">
@@ -1824,7 +1917,9 @@ function escHtml(str) {
 }
  
 document.addEventListener('DOMContentLoaded', () => {
+  updateMeetingDate();  // ← Sets the dynamic 3rd Tuesday date
   loadEndorsements();
+  triviaInit();
 });
  
 window.addEventListener('beforeunload', () => {
@@ -1879,7 +1974,7 @@ const TRIVIA = [
     fact: "Lowell is in Benton County, home to some of the fastest population and economic growth in the entire United States."
   },
   {
-    q: "How many years has Dwayne Snyder served on the City Council?",
+    q: "How many years did Dwayne serve on a city council?",
     options: ["4 years", "6 years", "10 years", "15 years"],
     answer: 2,
     fact: "Dwayne served 10 years on Star City - City Council — including as Budget Chairman — giving him real, tested experience in local governance."
@@ -1896,8 +1991,11 @@ let tIndex = 0, tScore = 0, tStreak = 0, tAnswered = false;
 let tOrder = [];
 
 function triviaInit() {
-  tOrder = [...Array(TRIVIA.length).keys()].sort(() => Math.random() - 0.5);
-  tIndex = 0; tScore = 0; tStreak = 0; tAnswered = false;
+  tOrder    = [...Array(TRIVIA.length).keys()].sort(() => Math.random() - 0.5);
+  tIndex    = 0;
+  tScore    = 0;
+  tStreak   = 0;
+  tAnswered = false;
   document.getElementById('trivia-game').style.display = 'block';
   document.getElementById('trivia-result').classList.remove('show');
   triviaRender();
@@ -1905,22 +2003,22 @@ function triviaInit() {
 
 function triviaRender() {
   const q = TRIVIA[tOrder[tIndex]];
-  document.getElementById('t-score').textContent = tScore;
-  document.getElementById('t-qnum').textContent = tIndex + 1;
+  document.getElementById('t-score').textContent    = tScore;
+  document.getElementById('t-qnum').textContent     = tIndex + 1;
   document.getElementById('t-progress').style.width = (tIndex / TRIVIA.length * 100) + '%';
   document.getElementById('t-question').textContent = q.q;
   document.getElementById('t-feedback').textContent = '';
-  document.getElementById('t-feedback').className = 'trivia-feedback';
+  document.getElementById('t-feedback').className   = 'trivia-feedback';
   document.getElementById('t-next').classList.remove('visible');
   tAnswered = false;
 
   const opts = document.getElementById('t-options');
   opts.innerHTML = '';
   q.options.forEach((opt, i) => {
-    const btn = document.createElement('button');
+    const btn    = document.createElement('button');
     btn.className = 'trivia-btn';
     btn.textContent = opt;
-    btn.onclick = () => triviaAnswer(i, btn);
+    btn.onclick  = () => triviaAnswer(i, btn);
     opts.appendChild(btn);
   });
 }
@@ -1928,7 +2026,7 @@ function triviaRender() {
 function triviaAnswer(chosen, btn) {
   if (tAnswered) return;
   tAnswered = true;
-  const q = TRIVIA[tOrder[tIndex]];
+  const q       = TRIVIA[tOrder[tIndex]];
   const allBtns = document.querySelectorAll('.trivia-btn');
   allBtns.forEach(b => b.disabled = true);
 
@@ -1976,8 +2074,6 @@ function triviaFinish() {
 }
 
 function triviaRestart() { triviaInit(); }
-
-document.addEventListener('DOMContentLoaded', triviaInit);
 
 </script>
 
